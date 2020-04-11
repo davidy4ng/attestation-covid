@@ -15,6 +15,7 @@
 		63067B9E2441E10A00B8B6C5 /* AttestationCovidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63067B9D2441E10A00B8B6C5 /* AttestationCovidTests.swift */; };
 		633C3CE22442081600ECFC19 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C3CE12442081600ECFC19 /* CheckButton.swift */; };
 		639053F82442698900DCB451 /* CertificatePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639053F72442698900DCB451 /* CertificatePreferences.swift */; };
+		639053FB2442819100DCB451 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639053FA2442819100DCB451 /* AboutViewController.swift */; };
 		6392B98224421F6D0077D83F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6392B98424421F6D0077D83F /* Localizable.strings */; };
 		6392B98724421FBA0077D83F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6392B98924421FBA0077D83F /* Main.storyboard */; };
 		6392B98B244222220077D83F /* FormViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98A244222220077D83F /* FormViewModels.swift */; };
@@ -53,6 +54,7 @@
 		63067B9F2441E10A00B8B6C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C3CE12442081600ECFC19 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		639053F72442698900DCB451 /* CertificatePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePreferences.swift; sourceTree = "<group>"; };
+		639053FA2442819100DCB451 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		6392B97F24421E920077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6392B98324421F6D0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6392B98824421FBA0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				63DF0A732441E49400E17515 /* Form */,
 				6392B99324422BC30077D83F /* Certificate */,
 				6392B99C24425A9A0077D83F /* List */,
+				639053F92442817D00DCB451 /* About */,
 				63067B8F2441E10A00B8B6C5 /* Assets.xcassets */,
 				63067B912441E10A00B8B6C5 /* LaunchScreen.storyboard */,
 				6392B98924421FBA0077D83F /* Main.storyboard */,
@@ -144,6 +147,14 @@
 				639053F72442698900DCB451 /* CertificatePreferences.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		639053F92442817D00DCB451 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				639053FA2442819100DCB451 /* AboutViewController.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		6392B98C2442223D0077D83F /* Models */ = {
@@ -311,6 +322,7 @@
 				6392B98B244222220077D83F /* FormViewModels.swift in Sources */,
 				63067B872441E10800B8B6C5 /* AppDelegate.swift in Sources */,
 				63DF0A782441E4D200E17515 /* CheckCell.swift in Sources */,
+				639053FB2442819100DCB451 /* AboutViewController.swift in Sources */,
 				6392B99E24425AFB0077D83F /* CertificateListViewController.swift in Sources */,
 				6392B98E2442224A0077D83F /* Certificate.swift in Sources */,
 				63067B892441E10800B8B6C5 /* SceneDelegate.swift in Sources */,
@@ -497,7 +509,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidy4ng.AttestationCovid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -515,7 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidy4ng.AttestationCovid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
