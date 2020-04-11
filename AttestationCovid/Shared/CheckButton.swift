@@ -9,6 +9,8 @@
 import UIKit
 
 final class CheckButton: UIButton {
+    var onSelectionChange: ((Bool) -> Void)?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -25,6 +27,7 @@ final class CheckButton: UIButton {
 
     @objc
     private func toggleSelection() {
-        self.isSelected.toggle()
+        isSelected.toggle()
+        onSelectionChange?(isSelected)
     }
 }

@@ -8,21 +8,20 @@
 
 import Foundation
 
-enum AttestationError: Error {
+enum CertificateError: Error {
     case missingInfo(String)
 }
 
-extension AttestationError: LocalizedError {
-    var localizedDescription: String {
-        if case let AttestationError.missingInfo(key) = self {
+extension CertificateError: LocalizedError {
+    var errorDescription: String? {
+        if case let CertificateError.missingInfo(key) = self {
             return "Une information est manquante: \(key)."
-        } else {
-            return "Le formulaire est incomplet."
         }
+        return nil
     }
 }
 
-struct Attestation: Codable {
+struct Certificate: Codable {
     struct Motive: OptionSet, Codable {
         let rawValue: Int
 
@@ -92,28 +91,28 @@ struct Attestation: Codable {
 
     func checkValidity() -> Result<Void, Error> {
         if firstname.isEmpty {
-            return .failure(AttestationError.missingInfo("prénom"))
+            return .failure(CertificateError.missingInfo("prénom"))
         }
         if lastname.isEmpty {
-            return .failure(AttestationError.missingInfo("nom"))
+            return .failure(CertificateError.missingInfo("nom"))
         }
         if birthdate.isEmpty {
-            return .failure(AttestationError.missingInfo("date de naissance"))
+            return .failure(CertificateError.missingInfo("date de naissance"))
         }
         if birthplace.isEmpty {
-            return .failure(AttestationError.missingInfo("lieu de naissance"))
+            return .failure(CertificateError.missingInfo("lieu de naissance"))
         }
         if address.isEmpty {
-            return .failure(AttestationError.missingInfo("adresse"))
+            return .failure(CertificateError.missingInfo("adresse"))
         }
         if city.isEmpty {
-            return .failure(AttestationError.missingInfo("ville"))
+            return .failure(CertificateError.missingInfo("ville"))
         }
         if zipCode.isEmpty {
-            return .failure(AttestationError.missingInfo("code postal"))
+            return .failure(CertificateError.missingInfo("code postal"))
         }
         if motives.isEmpty {
-            return .failure(AttestationError.missingInfo("motifs"))
+            return .failure(CertificateError.missingInfo("motifs"))
         }
         return .success(())
     }

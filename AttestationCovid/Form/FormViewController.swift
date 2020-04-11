@@ -10,12 +10,22 @@ import UIKit
 
 final class FormViewController: UITableViewController {
 
-    var attestation = Attestation(firstname: "David", lastname: "Yang", birthdate: "26/08/1988", birthplace: "Montauban", address: "17 avenue pierre et marie curie", city: "Bouillargues", zipCode: "30230", motives: [.family], date: Date())
+    private let certificatePreferences = DefaultCertificatePreferences()
+
+    private lazy var attestation: Certificate = {
+        var attestation = Certificate()
+        attestation.firstname = certificatePreferences.firstname
+        attestation.lastname = certificatePreferences.lastname
+        attestation.birthdate = certificatePreferences.birthday
+        attestation.birthplace = certificatePreferences.birthplace
+        attestation.address = certificatePreferences.address
+        attestation.city = certificatePreferences.city
+        attestation.zipCode = certificatePreferences.zipCode
+        return attestation
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Saisissez les informations"
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,74 +51,141 @@ final class FormViewController: UITableViewController {
         }
 
         switch (section, indexPath.row) {
-            // INFO section
+        // INFO section
         case (.info, FormSection.InfoContent.firstname.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("firstname", comment: ""), value: attestation.firstname)
+            cell.configure(name: NSLocalizedString("firstname", comment: ""), placeholderValue: "Jean", value: certificatePreferences.firstname) { [weak self] value in
+                self?.certificatePreferences.firstname = value
+                self?.attestation.firstname = value
+            }
             return cell
         case (.info, FormSection.InfoContent.lastname.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("lastname", comment: ""), value: attestation.lastname)
+            cell.configure(name: NSLocalizedString("lastname", comment: ""), placeholderValue: "Dupont", value: certificatePreferences.lastname) { [weak self] value in
+                self?.certificatePreferences.lastname = value
+                self?.attestation.lastname = value
+            }
             return cell
         case (.info, FormSection.InfoContent.birthdate.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("birthdate", comment: ""), value: attestation.birthdate)
+            cell.configure(name: NSLocalizedString("birthdate", comment: ""), placeholderValue: "01/01/1970", value: certificatePreferences.birthday, inputType: .date(DateFormatter.date)) { [weak self] value in
+                self?.certificatePreferences.birthday = value
+                self?.attestation.birthdate = value
+            }
             return cell
         case (.info, FormSection.InfoContent.birthplace.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("birthplace", comment: ""), value: attestation.birthplace)
+            cell.configure(name: NSLocalizedString("birthplace", comment: ""), placeholderValue: "Lyon", value: certificatePreferences.birthplace) { [weak self] value in
+                self?.certificatePreferences.birthplace = value
+                self?.attestation.birthplace = value
+            }
             return cell
         case (.info, FormSection.InfoContent.address.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("address", comment: ""), value: attestation.address)
+            cell.configure(name: NSLocalizedString("address", comment: ""), placeholderValue: "99 Avenue de France", value: certificatePreferences.address) { [weak self] value in
+                self?.certificatePreferences.address = value
+                self?.attestation.address = value
+            }
             return cell
         case (.info, FormSection.InfoContent.city.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("city", comment: ""), value: attestation.city)
+            cell.configure(name: NSLocalizedString("city", comment: ""), placeholderValue: "Paris", value: certificatePreferences.city) { [weak self] value in
+                self?.certificatePreferences.city = value
+                self?.attestation.city = value
+            }
             return cell
         case (.info, FormSection.InfoContent.zipCode.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("zipCode", comment: ""), value: attestation.zipCode)
+            cell.configure(name: NSLocalizedString("zipCode", comment: ""), placeholderValue: "75001", value: certificatePreferences.zipCode) { [weak self] value in
+                self?.certificatePreferences.zipCode = value
+                self?.attestation.zipCode = value
+            }
             return cell
 
-            // MOTIVES section
+        // MOTIVES section
         case (.motives, FormSection.MotivesContent.pro.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.pro", comment: ""), selected: attestation.motives.contains(.pro))
+            cell.configure(content: NSLocalizedString("motive.pro", comment: ""), selected: attestation.motives.contains(.pro)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.pro)
+                } else {
+                    self?.attestation.motives.remove(.pro)
+                }
+            }
             return cell
         case (.motives, FormSection.MotivesContent.shop.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.shop", comment: ""), selected: attestation.motives.contains(.shop))
+            cell.configure(content: NSLocalizedString("motive.shop", comment: ""), selected: attestation.motives.contains(.shop)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.shop)
+                } else {
+                    self?.attestation.motives.remove(.shop)
+                }
+            }
             return cell
         case (.motives, FormSection.MotivesContent.health.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.health", comment: ""), selected: attestation.motives.contains(.health))
+            cell.configure(content: NSLocalizedString("motive.health", comment: ""), selected: attestation.motives.contains(.health)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.health)
+                } else {
+                    self?.attestation.motives.remove(.health)
+                }
+            }
             return cell
         case (.motives, FormSection.MotivesContent.family.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.family", comment: ""), selected: attestation.motives.contains(.family))
+            cell.configure(content: NSLocalizedString("motive.family", comment: ""), selected: attestation.motives.contains(.family)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.family)
+                } else {
+                    self?.attestation.motives.remove(.family)
+                }
+            }
             return cell
         case (.motives, FormSection.MotivesContent.brief.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.brief", comment: ""), selected: attestation.motives.contains(.brief))
+            cell.configure(content: NSLocalizedString("motive.brief", comment: ""), selected: attestation.motives.contains(.brief)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.brief)
+                } else {
+                    self?.attestation.motives.remove(.brief)
+                }
+            }
             return cell
         case (.motives, FormSection.MotivesContent.administrative.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.administrative", comment: ""), selected: attestation.motives.contains(.administrative))
+            cell.configure(content: NSLocalizedString("motive.administrative", comment: ""), selected: attestation.motives.contains(.administrative)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.administrative)
+                } else {
+                    self?.attestation.motives.remove(.administrative)
+                }
+            }
             return cell
         case (.motives, FormSection.MotivesContent.tig.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
-            cell.configure(content: NSLocalizedString("motive.tig", comment: ""), selected: attestation.motives.contains(.tig))
+            cell.configure(content: NSLocalizedString("motive.tig", comment: ""), selected: attestation.motives.contains(.tig)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.tig)
+                } else {
+                    self?.attestation.motives.remove(.tig)
+                }
+            }
             return cell
 
-            // DATE section
+        // DATE section
         case (.date, FormSection.DateContent.date.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("date", comment: ""), value: DateFormatter.date.string(from: attestation.date))
+            cell.configure(name: NSLocalizedString("date", comment: ""), value: DateFormatter.date.string(from: attestation.date), inputType: .date(DateFormatter.date)) { [weak self] value in
+//                self?.attestation.date
+            }
             return cell
         case (.date, FormSection.DateContent.time.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("time", comment: ""), value: DateFormatter.time.string(from: attestation.date))
+            cell.configure(name: NSLocalizedString("time", comment: ""), value: DateFormatter.time.string(from: attestation.date), inputType: .time(DateFormatter.time)) { [weak self] value in
+                //                self?.attestation.date
+            }
             return cell
 
         default:
@@ -120,6 +197,7 @@ final class FormViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: KeyValueCell.identifier, for: indexPath) as? KeyValueCell else {
             fatalError("Could not dequeue KeyValueCell")
         }
+        cell.selectionStyle = .none
         return cell
     }
 
@@ -127,6 +205,7 @@ final class FormViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CheckCell.identifier, for: indexPath) as? CheckCell else {
             fatalError("Could not dequeue CheckCell")
         }
+        cell.selectionStyle = .none
         return cell
     }
 
@@ -135,9 +214,18 @@ final class FormViewController: UITableViewController {
         case .success:
             print("generation du pdf")
             do {
-                let document = try AttestationDocumentBuilder.buildDocument(from: attestation)
-                let attestationViewController = AttestationViewController(document: document)
-                self.navigationController?.pushViewController(attestationViewController, animated: true)
+                let creationDate = Date()
+                let document = try CertificateDocumentBuilder.buildDocument(from: attestation, creationDate: creationDate)
+                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                if let destinationPath = documentDirectory?.appendingPathComponent("attestation_\(DateFormatter.dateTimeDigits.string(from: creationDate)).pdf") {
+                    document.write(to: destinationPath)
+
+                    let attestationViewController = CertificateViewController(documentURL: destinationPath)
+                    let navigationController = UINavigationController(rootViewController: attestationViewController)
+                    present(navigationController, animated: true, completion: nil)
+                } else {
+                    self.showAlert(message: "Impossible de sauvegarder le fichier.")
+                }
             } catch {
                 self.showAlert(message: error.localizedDescription)
             }
@@ -147,4 +235,3 @@ final class FormViewController: UITableViewController {
     }
 
 }
-

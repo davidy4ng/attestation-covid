@@ -8,8 +8,14 @@
 
 import UIKit
 
-struct AttestationQRCodeBuilder {
-    static func build(from attestation: Attestation, creationDate: Date) -> UIImage {
+enum CertificateQRCodeBuilderError: Error {
+    case qrCodeGeneratorUnavailable
+    case qrCodeGenrationFailed
+    case qrCodeConversionToCGImageFailed
+}
+
+struct CertificateQRCodeBuilder {
+    static func build(from attestation: Certificate, creationDate: Date) throws -> UIImage {
         let formattedCreationDate = DateFormatter.date.string(from: creationDate)
         let formattedCreationTime = DateFormatter.shortTime.string(from: creationDate)
 
@@ -26,13 +32,13 @@ struct AttestationQRCodeBuilder {
         let content = strings.joined(separator: "; ")
         let data = content.data(using: .ascii)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
-            fatalError("QR code generation unavailable")
+            throw CertificateQRCodeBuilderError.qrCodeGeneratorUnavailable
         }
 
         qrFilter.setValue(data, forKey: "inputMessage")
 
         guard let qrImage = qrFilter.outputImage else {
-            fatalError("QR code generation failed")
+            throw CertificateQRCodeBuilderError.qrCodeGenrationFailed
         }
 
         let transform = CGAffineTransform(scaleX: 10, y: 10)
@@ -40,7 +46,7 @@ struct AttestationQRCodeBuilder {
 
         let context = CIContext()
         guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else {
-            fatalError("QR code conversion to CGImage failed")
+            throw CertificateQRCodeBuilderError.qrCodeConversionToCGImageFailed
         }
 
         return UIImage(cgImage: cgImage)

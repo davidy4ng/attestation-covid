@@ -9,7 +9,7 @@
 import Foundation
 import PDFKit
 
-enum AttestationDocumentBuilderError: Error {
+enum CertificateDocumentBuilderError: Error {
     case unableToOpenCertificate
 }
 
@@ -18,11 +18,11 @@ private enum AnnotationWidth {
     case width(CGFloat)
 }
 
-struct AttestationDocumentBuilder {
+struct CertificateDocumentBuilder {
 
-    static func buildDocument(from attestation: Attestation, creationDate: Date = Date()) throws -> PDFDocument {
+    static func buildDocument(from attestation: Certificate, creationDate: Date = Date()) throws -> PDFDocument {
         guard let document = PDFDocument(url: Bundle.main.url(forResource: "certificate", withExtension: "pdf")!) else {
-            throw AttestationDocumentBuilderError.unableToOpenCertificate
+            throw CertificateDocumentBuilderError.unableToOpenCertificate
         }
 
         let mainPage = document.page(at: 0)
@@ -60,7 +60,7 @@ struct AttestationDocumentBuilder {
         mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedHour, x: 198, y: 201, width: .width(20)))
         mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedMinute, x: 218, y: 201, width: .width(20)))
 
-        let qrImage = AttestationQRCodeBuilder.build(from: attestation, creationDate: creationDate)
+        let qrImage = try CertificateQRCodeBuilder.build(from: attestation, creationDate: creationDate)
         mainPage?.addAnnotation(makeImageAnnotation(image: qrImage, x: pageWidth - 170, y: 157, width: 100, height: 100))
         makeCreationDateAnnotations(creationDate: creationDate).forEach { mainPage?.addAnnotation($0) }
 

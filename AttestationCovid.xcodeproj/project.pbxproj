@@ -14,16 +14,19 @@
 		63067B932441E10A00B8B6C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63067B912441E10A00B8B6C5 /* LaunchScreen.storyboard */; };
 		63067B9E2441E10A00B8B6C5 /* AttestationCovidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63067B9D2441E10A00B8B6C5 /* AttestationCovidTests.swift */; };
 		633C3CE22442081600ECFC19 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C3CE12442081600ECFC19 /* CheckButton.swift */; };
+		639053F82442698900DCB451 /* CertificatePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639053F72442698900DCB451 /* CertificatePreferences.swift */; };
 		6392B98224421F6D0077D83F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6392B98424421F6D0077D83F /* Localizable.strings */; };
 		6392B98724421FBA0077D83F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6392B98924421FBA0077D83F /* Main.storyboard */; };
 		6392B98B244222220077D83F /* FormViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98A244222220077D83F /* FormViewModels.swift */; };
-		6392B98E2442224A0077D83F /* Attestation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98D2442224A0077D83F /* Attestation.swift */; };
+		6392B98E2442224A0077D83F /* Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98D2442224A0077D83F /* Certificate.swift */; };
 		6392B990244226490077D83F /* DateFormatterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98F244226490077D83F /* DateFormatterUtils.swift */; };
 		6392B992244229430077D83F /* UIViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B991244229430077D83F /* UIViewControllerUtils.swift */; };
-		6392B99524422BDE0077D83F /* AttestationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99424422BDE0077D83F /* AttestationViewController.swift */; };
+		6392B99524422BDE0077D83F /* CertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99424422BDE0077D83F /* CertificateViewController.swift */; };
 		6392B99724422CDC0077D83F /* certificate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6392B99624422CDC0077D83F /* certificate.pdf */; };
-		6392B99924422EE00077D83F /* AttestationDocumentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99824422EE00077D83F /* AttestationDocumentBuilder.swift */; };
-		6392B99B244245D60077D83F /* AttestationQRCodeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99A244245D60077D83F /* AttestationQRCodeBuilder.swift */; };
+		6392B99924422EE00077D83F /* CertificateDocumentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99824422EE00077D83F /* CertificateDocumentBuilder.swift */; };
+		6392B99B244245D60077D83F /* CertificateQRCodeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99A244245D60077D83F /* CertificateQRCodeBuilder.swift */; };
+		6392B99E24425AFB0077D83F /* CertificateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99D24425AFB0077D83F /* CertificateListViewController.swift */; };
+		6392B9A124425D5A0077D83F /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B9A024425D5A0077D83F /* FileCell.swift */; };
 		63DF0A762441E4B600E17515 /* KeyValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF0A752441E4B600E17515 /* KeyValueCell.swift */; };
 		63DF0A782441E4D200E17515 /* CheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF0A772441E4D200E17515 /* CheckCell.swift */; };
 /* End PBXBuildFile section */
@@ -49,17 +52,20 @@
 		63067B9D2441E10A00B8B6C5 /* AttestationCovidTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestationCovidTests.swift; sourceTree = "<group>"; };
 		63067B9F2441E10A00B8B6C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633C3CE12442081600ECFC19 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
+		639053F72442698900DCB451 /* CertificatePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePreferences.swift; sourceTree = "<group>"; };
 		6392B97F24421E920077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6392B98324421F6D0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6392B98824421FBA0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6392B98A244222220077D83F /* FormViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModels.swift; sourceTree = "<group>"; };
-		6392B98D2442224A0077D83F /* Attestation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attestation.swift; sourceTree = "<group>"; };
+		6392B98D2442224A0077D83F /* Certificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certificate.swift; sourceTree = "<group>"; };
 		6392B98F244226490077D83F /* DateFormatterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterUtils.swift; sourceTree = "<group>"; };
 		6392B991244229430077D83F /* UIViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtils.swift; sourceTree = "<group>"; };
-		6392B99424422BDE0077D83F /* AttestationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestationViewController.swift; sourceTree = "<group>"; };
+		6392B99424422BDE0077D83F /* CertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewController.swift; sourceTree = "<group>"; };
 		6392B99624422CDC0077D83F /* certificate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = certificate.pdf; sourceTree = "<group>"; };
-		6392B99824422EE00077D83F /* AttestationDocumentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestationDocumentBuilder.swift; sourceTree = "<group>"; };
-		6392B99A244245D60077D83F /* AttestationQRCodeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestationQRCodeBuilder.swift; sourceTree = "<group>"; };
+		6392B99824422EE00077D83F /* CertificateDocumentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDocumentBuilder.swift; sourceTree = "<group>"; };
+		6392B99A244245D60077D83F /* CertificateQRCodeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateQRCodeBuilder.swift; sourceTree = "<group>"; };
+		6392B99D24425AFB0077D83F /* CertificateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateListViewController.swift; sourceTree = "<group>"; };
+		6392B9A024425D5A0077D83F /* FileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		63DF0A752441E4B600E17515 /* KeyValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCell.swift; sourceTree = "<group>"; };
 		63DF0A772441E4D200E17515 /* CheckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +114,8 @@
 				633C3CE02442080500ECFC19 /* Shared */,
 				6392B98C2442223D0077D83F /* Models */,
 				63DF0A732441E49400E17515 /* Form */,
-				6392B99324422BC30077D83F /* Attestation */,
+				6392B99324422BC30077D83F /* Certificate */,
+				6392B99C24425A9A0077D83F /* List */,
 				63067B8F2441E10A00B8B6C5 /* Assets.xcassets */,
 				63067B912441E10A00B8B6C5 /* LaunchScreen.storyboard */,
 				6392B98924421FBA0077D83F /* Main.storyboard */,
@@ -134,6 +141,7 @@
 				633C3CE12442081600ECFC19 /* CheckButton.swift */,
 				6392B98F244226490077D83F /* DateFormatterUtils.swift */,
 				6392B991244229430077D83F /* UIViewControllerUtils.swift */,
+				639053F72442698900DCB451 /* CertificatePreferences.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -141,19 +149,36 @@
 		6392B98C2442223D0077D83F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6392B98D2442224A0077D83F /* Attestation.swift */,
+				6392B98D2442224A0077D83F /* Certificate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		6392B99324422BC30077D83F /* Attestation */ = {
+		6392B99324422BC30077D83F /* Certificate */ = {
 			isa = PBXGroup;
 			children = (
-				6392B99424422BDE0077D83F /* AttestationViewController.swift */,
-				6392B99824422EE00077D83F /* AttestationDocumentBuilder.swift */,
-				6392B99A244245D60077D83F /* AttestationQRCodeBuilder.swift */,
+				6392B99424422BDE0077D83F /* CertificateViewController.swift */,
+				6392B99824422EE00077D83F /* CertificateDocumentBuilder.swift */,
+				6392B99A244245D60077D83F /* CertificateQRCodeBuilder.swift */,
 			);
-			path = Attestation;
+			path = Certificate;
+			sourceTree = "<group>";
+		};
+		6392B99C24425A9A0077D83F /* List */ = {
+			isa = PBXGroup;
+			children = (
+				6392B99F24425D510077D83F /* Cells */,
+				6392B99D24425AFB0077D83F /* CertificateListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		6392B99F24425D510077D83F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6392B9A024425D5A0077D83F /* FileCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		63DF0A732441E49400E17515 /* Form */ = {
@@ -277,18 +302,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6392B99524422BDE0077D83F /* AttestationViewController.swift in Sources */,
+				6392B99524422BDE0077D83F /* CertificateViewController.swift in Sources */,
 				6392B992244229430077D83F /* UIViewControllerUtils.swift in Sources */,
 				63067B8B2441E10800B8B6C5 /* FormViewController.swift in Sources */,
-				6392B99B244245D60077D83F /* AttestationQRCodeBuilder.swift in Sources */,
+				6392B9A124425D5A0077D83F /* FileCell.swift in Sources */,
+				6392B99B244245D60077D83F /* CertificateQRCodeBuilder.swift in Sources */,
 				6392B990244226490077D83F /* DateFormatterUtils.swift in Sources */,
 				6392B98B244222220077D83F /* FormViewModels.swift in Sources */,
 				63067B872441E10800B8B6C5 /* AppDelegate.swift in Sources */,
 				63DF0A782441E4D200E17515 /* CheckCell.swift in Sources */,
-				6392B98E2442224A0077D83F /* Attestation.swift in Sources */,
+				6392B99E24425AFB0077D83F /* CertificateListViewController.swift in Sources */,
+				6392B98E2442224A0077D83F /* Certificate.swift in Sources */,
 				63067B892441E10800B8B6C5 /* SceneDelegate.swift in Sources */,
+				639053F82442698900DCB451 /* CertificatePreferences.swift in Sources */,
 				633C3CE22442081600ECFC19 /* CheckButton.swift in Sources */,
-				6392B99924422EE00077D83F /* AttestationDocumentBuilder.swift in Sources */,
+				6392B99924422EE00077D83F /* CertificateDocumentBuilder.swift in Sources */,
 				63DF0A762441E4B600E17515 /* KeyValueCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

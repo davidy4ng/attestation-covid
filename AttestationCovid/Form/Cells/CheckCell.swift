@@ -14,8 +14,11 @@ final class CheckCell: UITableViewCell {
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var checkButton: CheckButton!
 
-    func configure(content: String, selected: Bool = false) {
+    var valueChangedHandler: ((Bool) -> Void)?
+
+    func configure(content: String, selected: Bool = false, valueChangedHandler: ((Bool) -> Void)? = nil) {
         contentLabel.text = content
         checkButton.isSelected = selected
+        checkButton.onSelectionChange = valueChangedHandler
     }
 }

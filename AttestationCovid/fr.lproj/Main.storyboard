@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="54x-W7-dZ3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6qy-Aj-721">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="OiJ-jI-7DY">
+            <objects>
+                <tabBarController id="6qy-Aj-721" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="St2-jo-fk6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="M4d-HI-t6O" kind="relationship" relationship="viewControllers" id="b5L-0w-48P"/>
+                        <segue destination="Jy4-x2-6Hr" kind="relationship" relationship="viewControllers" id="Yki-dr-UE9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lwW-lV-4Jm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1323" y="89"/>
+        </scene>
+        <!--Générer-->
+        <scene sceneID="k2A-9v-ntz">
+            <objects>
+                <navigationController id="Jy4-x2-6Hr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Générer" image="plus.rectangle.fill.on.rectangle.fill" catalog="system" id="ev0-JP-gC9"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mj5-9u-WKB">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oQ5-4J-kVp" kind="relationship" relationship="rootViewController" id="A4d-f3-x5M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXJ-6k-Ffp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591" y="223"/>
+        </scene>
+        <!--Saisissez les informations-->
         <scene sceneID="4oA-yF-Pxz">
             <objects>
-                <tableViewController id="oQ5-4J-kVp" customClass="FormViewController" customModule="AttestationCovid" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FormViewController" id="oQ5-4J-kVp" customClass="FormViewController" customModule="AttestationCovid" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QWC-AX-hZA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,31 +157,55 @@ lakdsjlfkd</string>
                             <outlet property="delegate" destination="oQ5-4J-kVp" id="yEt-18-ZG7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="uBs-NQ-t2z"/>
+                    <tabBarItem key="tabBarItem" title="Générer" id="uQH-EQ-ko4"/>
+                    <navigationItem key="navigationItem" title="Saisissez les informations" id="uBs-NQ-t2z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSf-RX-cpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263.768115942029" y="174.77678571428569"/>
+            <point key="canvasLocation" x="245" y="223"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="nGt-Au-e5I">
+        <!--Mes certificats-->
+        <scene sceneID="ciX-83-Q4I">
             <objects>
-                <navigationController id="54x-W7-dZ3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lxG-xJ-gOo">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMk-TJ-6BK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="M4d-HI-t6O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Mes certificats" image="list.dash" catalog="system" id="c9z-yv-ey2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="igw-od-OdV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="oQ5-4J-kVp" kind="relationship" relationship="rootViewController" id="hxm-uf-so4"/>
+                        <segue destination="Mbc-RY-Xt0" kind="relationship" relationship="rootViewController" id="MAD-Lh-Ugu"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v7c-GB-EpE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-590" y="175"/>
+            <point key="canvasLocation" x="-590" y="-453"/>
+        </scene>
+        <!--Liste des certificats-->
+        <scene sceneID="pV6-L3-30e">
+            <objects>
+                <tableViewController id="Mbc-RY-Xt0" customClass="CertificateListViewController" customModule="AttestationCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZdU-C5-s5j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Mbc-RY-Xt0" id="nM3-Mx-ZUS"/>
+                            <outlet property="delegate" destination="Mbc-RY-Xt0" id="JwZ-pR-idk"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Mes certificats" id="Ce2-1U-2Dc"/>
+                    <navigationItem key="navigationItem" title="Liste des certificats" id="cmN-HB-yXG"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08w-4K-nB9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="246" y="-453"/>
         </scene>
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="64" height="60"/>
         <image name="circle" catalog="system" width="64" height="60"/>
+        <image name="list.dash" catalog="system" width="64" height="42"/>
+        <image name="plus.rectangle.fill.on.rectangle.fill" catalog="system" width="64" height="48"/>
     </resources>
 </document>

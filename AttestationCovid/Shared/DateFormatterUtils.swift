@@ -45,4 +45,11 @@ extension DateFormatter {
         formatter.dateFormat = "HH'h'mm"
         return formatter
     }()
+
+    static let dateTimeDigits: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateFormat = "ddMMYYYY'-'HHmm"
+        return formatter
+    }()
 }
