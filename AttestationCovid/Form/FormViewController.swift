@@ -182,7 +182,6 @@ final class FormViewController: UITableViewController {
                 let newDateString = value + " " + DateFormatter.hour.string(from: actualDate) +  ":" + DateFormatter.minute.string(from: actualDate)
                 let newDate = DateFormatter.dateTimeFr.date(from: newDateString) ?? Date()
                 self?.attestation.date = newDate
-                print("Updated date: " + value + " | attestation date: " + DateFormatter.dateTimeFr.string(from: self?.attestation.date ?? Date() ))
             }
             return cell
         case (.date, FormSection.DateContent.time.rawValue):
@@ -190,7 +189,6 @@ final class FormViewController: UITableViewController {
             cell.configure(name: NSLocalizedString("time", comment: ""), value: DateFormatter.time.string(from: attestation.date), inputType: .time(DateFormatter.time)) { [weak self] value in
                 let actualDate = DateFormatter.dateFr.string(from: self?.attestation.date ?? Date())
                 self?.attestation.date = DateFormatter.dateTimeFr.date(from: actualDate + " " + value) ?? Date()
-                print("Updated time: " + value + " | attestation date: " + DateFormatter.dateTimeFr.string(from: self?.attestation.date ?? Date() ))
             }
             return cell
 
