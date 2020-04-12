@@ -52,4 +52,11 @@ extension DateFormatter {
         formatter.dateFormat = "ddMMYYYY'-'HHmm"
         return formatter
     }()
+
+    static let readableDateTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateFormat = "dd'-'MM'-'YYYY'_'HH'-'mm'-'ss"
+        return formatter
+    }()
 }

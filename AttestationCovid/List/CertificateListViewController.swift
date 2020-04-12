@@ -12,6 +12,10 @@ final class CertificateListViewController: UITableViewController {
 
     private var certificates: [URL] = []
 
+    private var documentDirectory: URL? {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +35,7 @@ final class CertificateListViewController: UITableViewController {
     }
 
     private func load(completion: () -> Void) {
-        if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first, let files = try? FileManager.default.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil, options: []) {
+        if let documentDirectory = documentDirectory, let files = try? FileManager.default.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil, options: []) {
             self.certificates = files
             completion()
         }
@@ -66,5 +70,23 @@ extension CertificateListViewController {
         let attestationViewController = CertificateViewController(documentURL: documentURL)
         let navigationController = UINavigationController(rootViewController: attestationViewController)
         present(navigationController, animated: true, completion: nil)
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do {
+                try removeCertificate(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
+            }
+        }
+    }
+}
+
+extension CertificateListViewController {
+    private func removeCertificate(at index: Int) throws {
+        try FileManager.default.removeItem(at: certificates[index])
+        certificates.remove(at: index)
     }
 }

@@ -22,3 +22,8 @@
 "about.web" = "Générateur officiel en ligne";
 "about.me.title" = "À propos de l'auteur";
 "about.me.twitter" = "Twitter";
+"about.me.blog" = "Blog";
+"about.sourceCode.title" = "Code source de l'application";
+"about.sourceCode.github" = "Github";
+
+"filename" = "Attestation_%@.pdf";

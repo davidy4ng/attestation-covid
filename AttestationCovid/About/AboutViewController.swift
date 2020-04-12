@@ -20,11 +20,17 @@ enum AboutSections: Int, CaseIterable {
 
     enum DeveloperLinksContent: Int, CaseIterable {
         case twitter
+        case blog
+    }
+
+    enum SourceLinksContent: Int, CaseIterable {
+        case github
     }
 
     case app
     case officialLinks
     case developerLinks
+    case source
 }
 
 final class AboutViewController: UITableViewController {
@@ -46,6 +52,8 @@ final class AboutViewController: UITableViewController {
             return AboutSections.OfficialLinksContent.allCases.count
         case .developerLinks?:
             return AboutSections.DeveloperLinksContent.allCases.count
+        case .source?:
+            return AboutSections.SourceLinksContent.allCases.count
         default:
             return 0
         }
@@ -57,6 +65,8 @@ final class AboutViewController: UITableViewController {
             return NSLocalizedString("about.official.title", comment: "")
         case .developerLinks?:
             return NSLocalizedString("about.me.title", comment: "")
+        case .source?:
+            return NSLocalizedString("about.sourceCode.title", comment: "")
         default:
             return nil
         }
@@ -76,6 +86,12 @@ final class AboutViewController: UITableViewController {
         case (.developerLinks, AboutSections.DeveloperLinksContent.twitter.rawValue):
             cell.textLabel?.text = NSLocalizedString("about.me.twitter", comment: "")
             cell.textLabel?.numberOfLines = 1
+        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
+            cell.textLabel?.text = NSLocalizedString("about.me.blog", comment: "")
+            cell.textLabel?.numberOfLines = 1
+        case (.source, AboutSections.SourceLinksContent.github.rawValue):
+            cell.textLabel?.text = NSLocalizedString("about.sourceCode.github", comment: "")
+            cell.textLabel?.numberOfLines = 1
         default:
             break
         }
@@ -93,6 +109,7 @@ final class AboutViewController: UITableViewController {
             let url = URL(string: "https://media.interieur.gouv.fr/deplacement-covid-19/")!
             let safariController = SFSafariViewController(url: url)
             present(safariController, animated: true, completion: nil)
+
         case (.developerLinks, AboutSections.DeveloperLinksContent.twitter.rawValue):
             let url = URL(string: "https://twitter.com/davidy4ng")!
             if UIApplication.shared.canOpenURL(url) {
@@ -101,6 +118,25 @@ final class AboutViewController: UITableViewController {
                 let safariController = SFSafariViewController(url: url)
                 present(safariController, animated: true, completion: nil)
             }
+
+        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
+            let url = URL(string: "https://david.y4ng.fr")!
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                let safariController = SFSafariViewController(url: url)
+                present(safariController, animated: true, completion: nil)
+            }
+
+        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
+            let url = URL(string: "https://github.com/davidy4ng/attestation-covid")!
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                let safariController = SFSafariViewController(url: url)
+                present(safariController, animated: true, completion: nil)
+            }
+
         default:
             break
         }

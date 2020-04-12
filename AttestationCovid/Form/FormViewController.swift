@@ -217,9 +217,9 @@ final class FormViewController: UITableViewController {
                 let creationDate = Date()
                 let document = try CertificateDocumentBuilder.buildDocument(from: attestation, creationDate: creationDate)
                 let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-                if let destinationPath = documentDirectory?.appendingPathComponent("attestation_\(DateFormatter.dateTimeDigits.string(from: creationDate)).pdf") {
+                let filename = String(format: NSLocalizedString("filename", comment: ""), DateFormatter.readableDateTime.string(from: creationDate))
+                if let destinationPath = documentDirectory?.appendingPathComponent(filename) {
                     document.write(to: destinationPath)
-
                     let attestationViewController = CertificateViewController(documentURL: destinationPath)
                     let navigationController = UINavigationController(rootViewController: attestationViewController)
                     present(navigationController, animated: true, completion: nil)

@@ -43,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		63067B832441E10800B8B6C5 /* Attestation Covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Attestation Covid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63067B832441E10800B8B6C5 /* Covid Attestation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid Attestation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63067B862441E10800B8B6C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63067B882441E10800B8B6C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63067B8A2441E10800B8B6C5 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 		63067B842441E10800B8B6C5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63067B832441E10800B8B6C5 /* Attestation Covid.app */,
+				63067B832441E10800B8B6C5 /* Covid Attestation.app */,
 				63067B992441E10A00B8B6C5 /* AttestationCovidTests.xctest */,
 			);
 			name = Products;
@@ -228,7 +228,7 @@
 			);
 			name = AttestationCovid;
 			productName = AttestationCovid;
-			productReference = 63067B832441E10800B8B6C5 /* Attestation Covid.app */;
+			productReference = 63067B832441E10800B8B6C5 /* Covid Attestation.app */;
 			productType = "com.apple.product-type.application";
 		};
 		63067B982441E10A00B8B6C5 /* AttestationCovidTests */ = {
@@ -508,7 +508,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.y4ng.AttestationCovid;
-				PRODUCT_NAME = "Attestation Covid";
+				PRODUCT_NAME = "Covid Attestation";
 				PROVISIONING_PROFILE_SPECIFIER = "Development Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -528,7 +528,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.y4ng.AttestationCovid;
-				PRODUCT_NAME = "Attestation Covid";
+				PRODUCT_NAME = "Covid Attestation";
 				PROVISIONING_PROFILE_SPECIFIER = AttestationCovid_AppStore;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
