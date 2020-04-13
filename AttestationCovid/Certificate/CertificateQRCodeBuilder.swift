@@ -30,7 +30,7 @@ struct CertificateQRCodeBuilder {
         ]
 
         let content = strings.joined(separator: "; ")
-        let data = content.data(using: .ascii)
+        let data = content.data(using: .utf8)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
             throw CertificateQRCodeBuilderError.qrCodeGeneratorUnavailable
         }
