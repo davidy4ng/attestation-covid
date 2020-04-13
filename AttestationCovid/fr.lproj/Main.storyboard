@@ -195,7 +195,7 @@ lakdsjlfkd</string>
                             <outlet property="delegate" destination="Mbc-RY-Xt0" id="JwZ-pR-idk"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Mes certificats" id="Ce2-1U-2Dc"/>
+                    <tabBarItem key="tabBarItem" title="Mes attestations" id="Ce2-1U-2Dc"/>
                     <navigationItem key="navigationItem" title="Liste des attestations" id="cmN-HB-yXG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08w-4K-nB9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
