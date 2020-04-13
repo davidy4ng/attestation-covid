@@ -11,6 +11,7 @@ import UIKit
 final class KeyValueCell: UITableViewCell {
     enum InputType {
         case text
+        case birthdate(DateFormatter)
         case date(DateFormatter)
         case time(DateFormatter)
     }
@@ -39,6 +40,19 @@ final class KeyValueCell: UITableViewCell {
         case .time(let formatter):
             let date = formatter.date(from: value) ?? Date()
             valueTextField.inputView = makeDatePickerInputView(mode: .time, date: date)
+            valueTextField.inputAccessoryView = nil
+        case .birthdate(let formatter):
+            let currentDate = Date()
+            var dateComponents = DateComponents()
+            let calendar = Calendar.init(identifier: .gregorian)
+            dateComponents.year = -150
+            let minDate = calendar.date(byAdding: dateComponents, to: currentDate)
+            dateComponents.year = -10
+            let maxDate = calendar.date(byAdding: dateComponents, to: currentDate)
+            dateComponents.year = -30
+            let defaultDate = calendar.date(byAdding: dateComponents, to: currentDate) ?? Date()
+            let date = formatter.date(from: value) ?? defaultDate
+            valueTextField.inputView = makeDatePickerInputView(mode: .date, date: date, maxDate: maxDate, minDate: minDate)
             valueTextField.inputAccessoryView = nil
         default:
             valueTextField.inputView = nil
@@ -83,7 +97,7 @@ extension KeyValueCell {
         return containerView
     }
 
-    private func makeDatePickerInputView(mode: UIDatePicker.Mode, date: Date) -> UIView {
+    private func makeDatePickerInputView(mode: UIDatePicker.Mode, date: Date, maxDate: Date? = nil, minDate: Date? = nil) -> UIView {
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
 
         let toolbar = makeToolbar()
@@ -91,6 +105,13 @@ extension KeyValueCell {
         let picker = UIDatePicker()
         picker.datePickerMode = mode
         picker.date = date
+        if (maxDate != nil) {
+          picker.maximumDate = maxDate
+        }
+        if (minDate != nil) {
+          picker.minimumDate = minDate
+        }
+    
         picker.addTarget(self, action: #selector(updateDateTextValue(_:)), for: .valueChanged)
 
         containerView.addSubview(toolbar)
@@ -116,6 +137,9 @@ extension KeyValueCell {
             valueTextField.text = formatter.string(from: sender.date)
             textValueChanged()
         case .time(let formatter):
+            valueTextField.text = formatter.string(from: sender.date)
+            textValueChanged()
+        case .birthdate(let formatter):
             valueTextField.text = formatter.string(from: sender.date)
             textValueChanged()
         default:
