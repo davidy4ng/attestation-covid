@@ -60,17 +60,11 @@ extension DateFormatter {
         return formatter
     }()
     
-    static let dateFr: DateFormatter = {
-           let formatter = DateFormatter()
-           formatter.locale = Locale(identifier: "fr_FR")
-           formatter.dateFormat = "dd/MM/yyyy"
-           return formatter
-       }()
-    
-    static let dateTimeFr: DateFormatter = {
+    static let dateTime: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        formatter.dateFormat = "dd/MM/yyyy HH:mm"
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         return formatter
     }()
 }
