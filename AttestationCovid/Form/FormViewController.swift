@@ -68,7 +68,7 @@ final class FormViewController: UITableViewController {
             return cell
         case (.info, FormSection.InfoContent.birthdate.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("birthdate", comment: ""), placeholderValue: "01/01/1970", value: certificatePreferences.birthday, inputType: .date(DateFormatter.date)) { [weak self] value in
+            cell.configure(name: NSLocalizedString("birthdate", comment: ""), placeholderValue: "01/01/1970", value: certificatePreferences.birthday, inputType: .birthdate(DateFormatter.date)) { [weak self] value in
                 self?.certificatePreferences.birthday = value
                 self?.attestation.birthdate = value
             }
