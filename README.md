@@ -9,3 +9,7 @@ Il s'agit d'une version mobile iOS du générateur originale mis à disposition 
 ## Auteur
 
 David Yang
+
+## Contributeurs
+
+Razvan Bunea
