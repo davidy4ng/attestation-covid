@@ -11,8 +11,7 @@ import UIKit
 final class KeyValueCell: UITableViewCell {
     enum InputType {
         case text
-        case birthdate(DateFormatter)
-        case date(DateFormatter)
+        case date(DateFormatter, defaultDate: Date? = nil, minDate: Date? = nil, maxDate: Date? = nil)
         case time(DateFormatter)
     }
 
@@ -33,26 +32,14 @@ final class KeyValueCell: UITableViewCell {
         valueTextField.text = value
         self.inputType = inputType
         switch inputType {
-        case .date(let formatter):
-            let date = formatter.date(from: value) ?? Date()
-            valueTextField.inputView = makeDatePickerInputView(mode: .date, date: date)
+        case .date(let formatter, let defaultDate, let minDate, let maxDate):
+            let currentDate = Date()
+            let date = formatter.date(from: value) ?? defaultDate ?? currentDate
+            valueTextField.inputView = makeDatePickerInputView(mode: .date, date: date, maxDate: maxDate, minDate: minDate)
             valueTextField.inputAccessoryView = nil
         case .time(let formatter):
             let date = formatter.date(from: value) ?? Date()
             valueTextField.inputView = makeDatePickerInputView(mode: .time, date: date)
-            valueTextField.inputAccessoryView = nil
-        case .birthdate(let formatter):
-            let currentDate = Date()
-            var dateComponents = DateComponents()
-            let calendar = Calendar.init(identifier: .gregorian)
-            dateComponents.year = -150
-            let minDate = calendar.date(byAdding: dateComponents, to: currentDate)
-            dateComponents.year = -10
-            let maxDate = calendar.date(byAdding: dateComponents, to: currentDate)
-            dateComponents.year = -30
-            let defaultDate = calendar.date(byAdding: dateComponents, to: currentDate) ?? Date()
-            let date = formatter.date(from: value) ?? defaultDate
-            valueTextField.inputView = makeDatePickerInputView(mode: .date, date: date, maxDate: maxDate, minDate: minDate)
             valueTextField.inputAccessoryView = nil
         default:
             valueTextField.inputView = nil
@@ -133,13 +120,10 @@ extension KeyValueCell {
 
     @objc private func updateDateTextValue(_ sender: UIDatePicker) {
         switch inputType {
-        case .date(let formatter):
+        case .date(let formatter, _, _, _):
             valueTextField.text = formatter.string(from: sender.date)
             textValueChanged()
         case .time(let formatter):
-            valueTextField.text = formatter.string(from: sender.date)
-            textValueChanged()
-        case .birthdate(let formatter):
             valueTextField.text = formatter.string(from: sender.date)
             textValueChanged()
         default:
