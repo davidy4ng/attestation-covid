@@ -49,14 +49,22 @@ extension DateFormatter {
     static let dateTimeDigits: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        formatter.dateFormat = "ddMMYYYY'-'HHmm"
+        formatter.dateFormat = "ddMMyyyy'-'HHmm"
         return formatter
     }()
 
     static let readableDateTime: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        formatter.dateFormat = "dd'-'MM'-'YYYY'_'HH'-'mm'-'ss"
+        formatter.dateFormat = "dd'-'MM'-'yyyy'_'HH'-'mm'-'ss"
+        return formatter
+    }()
+    
+    static let dateTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         return formatter
     }()
 }

@@ -177,14 +177,24 @@ final class FormViewController: UITableViewController {
         // DATE section
         case (.date, FormSection.DateContent.date.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("date", comment: ""), value: DateFormatter.date.string(from: attestation.date), inputType: .date(DateFormatter.date)) { [weak self] value in
-//                self?.attestation.date
+            cell.configure(name: NSLocalizedString("date", comment: ""), value: DateFormatter.date.string(from: attestation.date), inputType: .date(DateFormatter.date)) { [weak self] dateString in
+                guard let self = self else { return }
+                let timeString = DateFormatter.time.string(from: self.attestation.date)
+                let newDateString = "\(dateString) \(timeString)"
+                if let newDate = DateFormatter.dateTime.date(from: newDateString) {
+                    self.attestation.date = newDate
+                }
             }
             return cell
         case (.date, FormSection.DateContent.time.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("time", comment: ""), value: DateFormatter.time.string(from: attestation.date), inputType: .time(DateFormatter.time)) { [weak self] value in
-                //                self?.attestation.date
+            cell.configure(name: NSLocalizedString("time", comment: ""), value: DateFormatter.time.string(from: attestation.date), inputType: .time(DateFormatter.time)) { [weak self] timeString in
+                guard let self = self else { return }
+                let dateString = DateFormatter.date.string(from: self.attestation.date)
+                let newDateString = "\(dateString) \(timeString)"
+                if let newDate = DateFormatter.dateTime.date(from: newDateString) {
+                    self.attestation.date = newDate
+                }
             }
             return cell
 
