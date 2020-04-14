@@ -11,7 +11,7 @@ import UIKit
 final class KeyValueCell: UITableViewCell {
     enum InputType {
         case text
-        case date(DateFormatter)
+        case date(DateFormatter, defaultDate: Date? = nil, minDate: Date? = nil, maxDate: Date? = nil)
         case time(DateFormatter)
     }
 
@@ -32,9 +32,10 @@ final class KeyValueCell: UITableViewCell {
         valueTextField.text = value
         self.inputType = inputType
         switch inputType {
-        case .date(let formatter):
-            let date = formatter.date(from: value) ?? Date()
-            valueTextField.inputView = makeDatePickerInputView(mode: .date, date: date)
+        case .date(let formatter, let defaultDate, let minDate, let maxDate):
+            let currentDate = Date()
+            let date = formatter.date(from: value) ?? defaultDate ?? currentDate
+            valueTextField.inputView = makeDatePickerInputView(mode: .date, date: date, maxDate: maxDate, minDate: minDate)
             valueTextField.inputAccessoryView = nil
         case .time(let formatter):
             let date = formatter.date(from: value) ?? Date()
@@ -83,7 +84,7 @@ extension KeyValueCell {
         return containerView
     }
 
-    private func makeDatePickerInputView(mode: UIDatePicker.Mode, date: Date) -> UIView {
+    private func makeDatePickerInputView(mode: UIDatePicker.Mode, date: Date, maxDate: Date? = nil, minDate: Date? = nil) -> UIView {
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
 
         let toolbar = makeToolbar()
@@ -91,6 +92,13 @@ extension KeyValueCell {
         let picker = UIDatePicker()
         picker.datePickerMode = mode
         picker.date = date
+        if (maxDate != nil) {
+          picker.maximumDate = maxDate
+        }
+        if (minDate != nil) {
+          picker.minimumDate = minDate
+        }
+    
         picker.addTarget(self, action: #selector(updateDateTextValue(_:)), for: .valueChanged)
 
         containerView.addSubview(toolbar)
@@ -112,7 +120,7 @@ extension KeyValueCell {
 
     @objc private func updateDateTextValue(_ sender: UIDatePicker) {
         switch inputType {
-        case .date(let formatter):
+        case .date(let formatter, _, _, _):
             valueTextField.text = formatter.string(from: sender.date)
             textValueChanged()
         case .time(let formatter):

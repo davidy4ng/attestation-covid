@@ -16,6 +16,7 @@
 		633C3CE22442081600ECFC19 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C3CE12442081600ECFC19 /* CheckButton.swift */; };
 		639053F82442698900DCB451 /* CertificatePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639053F72442698900DCB451 /* CertificatePreferences.swift */; };
 		639053FB2442819100DCB451 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639053FA2442819100DCB451 /* AboutViewController.swift */; };
+		639053FD24464F9900DCB451 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639053FC24464F9900DCB451 /* DateUtils.swift */; };
 		6392B98224421F6D0077D83F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6392B98424421F6D0077D83F /* Localizable.strings */; };
 		6392B98724421FBA0077D83F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6392B98924421FBA0077D83F /* Main.storyboard */; };
 		6392B98B244222220077D83F /* FormViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98A244222220077D83F /* FormViewModels.swift */; };
@@ -55,6 +56,7 @@
 		633C3CE12442081600ECFC19 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		639053F72442698900DCB451 /* CertificatePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePreferences.swift; sourceTree = "<group>"; };
 		639053FA2442819100DCB451 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		639053FC24464F9900DCB451 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		6392B97F24421E920077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6392B98324421F6D0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6392B98824421FBA0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				633C3CE12442081600ECFC19 /* CheckButton.swift */,
 				6392B98F244226490077D83F /* DateFormatterUtils.swift */,
+				639053FC24464F9900DCB451 /* DateUtils.swift */,
 				6392B991244229430077D83F /* UIViewControllerUtils.swift */,
 				639053F72442698900DCB451 /* CertificatePreferences.swift */,
 			);
@@ -326,6 +329,7 @@
 				6392B99E24425AFB0077D83F /* CertificateListViewController.swift in Sources */,
 				6392B98E2442224A0077D83F /* Certificate.swift in Sources */,
 				63067B892441E10800B8B6C5 /* SceneDelegate.swift in Sources */,
+				639053FD24464F9900DCB451 /* DateUtils.swift in Sources */,
 				639053F82442698900DCB451 /* CertificatePreferences.swift in Sources */,
 				633C3CE22442081600ECFC19 /* CheckButton.swift in Sources */,
 				6392B99924422EE00077D83F /* CertificateDocumentBuilder.swift in Sources */,
