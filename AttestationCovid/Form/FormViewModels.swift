@@ -24,9 +24,11 @@ enum FormSection: Int, CaseIterable {
         case shop
         case health
         case family
+        case disabledPeopleTransport
         case brief
         case administrative
         case tig
+        case school
     }
 
     enum DateContent: Int, CaseIterable {
