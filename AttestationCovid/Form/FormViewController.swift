@@ -150,6 +150,16 @@ final class FormViewController: UITableViewController {
                 }
             }
             return cell
+        case (.motives, FormSection.MotivesContent.disabledPeopleTransport.rawValue):
+            let cell = self.checkCell(tableView, indexPath: indexPath)
+            cell.configure(content: NSLocalizedString("motive.disabledPeopleTransport", comment: ""), selected: attestation.motives.contains(.disabledPeopleTransport)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.disabledPeopleTransport)
+                } else {
+                    self?.attestation.motives.remove(.disabledPeopleTransport)
+                }
+            }
+            return cell
         case (.motives, FormSection.MotivesContent.brief.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
             cell.configure(content: NSLocalizedString("motive.brief", comment: ""), selected: attestation.motives.contains(.brief)) { [weak self] value in
@@ -177,6 +187,16 @@ final class FormViewController: UITableViewController {
                     self?.attestation.motives.insert(.tig)
                 } else {
                     self?.attestation.motives.remove(.tig)
+                }
+            }
+            return cell
+        case (.motives, FormSection.MotivesContent.school.rawValue):
+            let cell = self.checkCell(tableView, indexPath: indexPath)
+            cell.configure(content: NSLocalizedString("motive.school", comment: ""), selected: attestation.motives.contains(.school)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.school)
+                } else {
+                    self?.attestation.motives.remove(.school)
                 }
             }
             return cell
