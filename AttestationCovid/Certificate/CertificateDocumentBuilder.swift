@@ -28,43 +28,45 @@ struct CertificateDocumentBuilder {
         let mainPage = document.page(at: 0)
         let pageWidth = mainPage?.bounds(for: .mediaBox).width ?? 600
 
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.displayName, x: 123, y: 686, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthdate, x: 123, y: 661, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthplace, x: 92, y: 638, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.fullAddress, x: 134, y: 613, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.displayName, x: 115, y: 698, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthdate, x: 115, y: 675, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthplace, x: 295, y: 675, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.fullAddress, x: 130, y: 653, width: .fittingPage(pageWidth)))
 
         if attestation.motives.contains(.pro) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 527))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 577))
         }
         if attestation.motives.contains(.shop) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 478))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 532))
         }
         if attestation.motives.contains(.health) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 436))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 477))
         }
         if attestation.motives.contains(.family) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 400))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 435))
+        }
+        if attestation.motives.contains(.disabledPeopleTransport) {
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 395))
         }
         if attestation.motives.contains(.brief) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 345))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 355))
         }
         if attestation.motives.contains(.administrative) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 298))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 295))
         }
         if attestation.motives.contains(.tig) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 260))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 254))
+        }
+        if attestation.motives.contains(.school) {
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 80, y: 210))
         }
 
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.city, x: 111, y: 226, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedDate, x: 92, y: 200, width: .width(80)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedHour, x: 198, y: 201, width: .width(20)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedMinute, x: 218, y: 201, width: .width(20)))
-
-        let qrImage = try CertificateQRCodeBuilder.build(from: attestation, creationDate: creationDate)
-        mainPage?.addAnnotation(makeImageAnnotation(image: qrImage, x: pageWidth - 170, y: 157, width: 100, height: 100))
-        makeCreationDateAnnotations(creationDate: creationDate).forEach { mainPage?.addAnnotation($0) }
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.city, x: 106, y: 175, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedDate, x: 92, y: 153, width: .width(80)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedTime, x: 255, y: 153, width: .width(80)))
 
         let qrPage = PDFPage()
+        let qrImage = try CertificateQRCodeBuilder.build(from: attestation, creationDate: creationDate)
         let qrPageHeight = qrPage.bounds(for: .mediaBox).height
         qrPage.addAnnotation(makeImageAnnotation(image: qrImage, x: 50, y: qrPageHeight - 350, width: 300, height: 300))
         document.insert(qrPage, at: 1)
