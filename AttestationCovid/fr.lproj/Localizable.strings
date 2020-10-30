@@ -29,3 +29,8 @@
 "about.sourceCode.github" = "Github";
 
 "filename" = "Attestation_%@.pdf";
+
+"certificates.deleteall.alert.title" = "Tout supprimer";
+"certificates.deleteall.alert.message" = "Supprimer l'ensemble des certificats ?";
+"certificates.deleteall.alert.cancel" = "Annuler";
+"certificates.deleteall.alert.delete" = "Supprimer";

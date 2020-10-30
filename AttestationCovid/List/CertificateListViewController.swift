@@ -6,41 +6,138 @@
 //  Copyright © 2020 David Yang. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 final class CertificateListViewController: UITableViewController {
-
+    
+    // MARK: Outlets
+    
+    @IBOutlet private weak var deleteAllCertificatesButton: UIBarButtonItem!
+    
+    // MARK: Attributes
+    
     private var certificates: [URL] = []
-
+    
     private var documentDirectory: URL? {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     }
-
+    
+    private let disposeBag = DisposeBag()
+    
+    // MARK: Viewcontroller lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        registerCells()
+        
+        // Register cells
+        self.registerCells()
+        
+        // Delete all certificates
+        self.deleteAllCertificatesButton.rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                
+                self?.showDeleteAllCertificatesAlert()
+                
+            })
+            .disposed(by: self.disposeBag)
+        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        load {
-            tableView.reloadData()
+        
+        // Reload data
+        self.load {
+            
+            // Reload tableView
+            self.tableView.reloadData()
+            
         }
+        
     }
-
+    
+    // MARK: Methods
+    
     private func registerCells() {
         tableView.register(FileCell.self, forCellReuseIdentifier: FileCell.identifier)
     }
-
+    
     private func load(completion: () -> Void) {
-        if let documentDirectory = documentDirectory, let files = try? FileManager.default.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil, options: []) {
+        if let documentDirectory = documentDirectory,
+           let files = try? FileManager.default.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil, options: []) {
             self.certificates = files
             completion()
         }
-
     }
+    
+    private func removeCertificate(at index: Int) throws {
+        try FileManager.default.removeItem(at: self.certificates[index])
+        self.certificates.remove(at: index)
+    }
+    
+    private func removeAllCertificates() throws {
+        
+        // Foreach certificate index
+        try self.certificates.forEach { (url: URL) in
+            
+            // Delete item at url
+            try FileManager.default.removeItem(at: url)
+            
+        }
+        
+        // Reload data
+        self.load() {
+            
+            // Reload tableView
+            self.tableView.reloadData()
+            
+        }
+        
+    }
+    
+    private func showDeleteAllCertificatesAlert() {
+        
+        // Alert controller
+        let alertController = UIAlertController(title: NSLocalizedString("certificates.deleteall.alert.title", comment: ""),
+                                                message: NSLocalizedString("certificates.deleteall.alert.message", comment: ""),
+                                                preferredStyle: .alert)
+        
+        // Cancel action
+        let cancelAction = UIAlertAction(title: NSLocalizedString("certificates.deleteall.alert.cancel", comment: ""),
+                                         style: .default,
+                                         handler: nil)
+        alertController.addAction(cancelAction)
+        
+        // Delete action
+        let deleteAction = UIAlertAction(title: NSLocalizedString("certificates.deleteall.alert.delete", comment: ""),
+                                         style: .destructive,
+                                         handler: { [weak self] _ in
+                                            
+                                            do {
+                                                
+                                                // Remove all certificates
+                                                try self?.removeAllCertificates()
+                                                
+                                            }
+                                            catch {
+                                                
+                                                self?.showAlert(message: "Une erreur s'est produite. Impossible de supprimer les attestations")
+                                                
+                                            }
+                                            
+                                         })
+        alertController.addAction(deleteAction)
+        
+        // Show alert
+        self.present(alertController,
+                     animated: true,
+                     completion: nil)
+        
+    }
+    
 }
 
 extension CertificateListViewController {
@@ -81,12 +178,5 @@ extension CertificateListViewController {
                 showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
             }
         }
-    }
-}
-
-extension CertificateListViewController {
-    private func removeCertificate(at index: Int) throws {
-        try FileManager.default.removeItem(at: certificates[index])
-        certificates.remove(at: index)
     }
 }
