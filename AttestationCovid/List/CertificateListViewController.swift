@@ -35,6 +35,7 @@ final class CertificateListViewController: UITableViewController {
         super.viewDidLoad()
 
         registerCells()
+        tableView.tableFooterView = UIView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -69,6 +70,22 @@ final class CertificateListViewController: UITableViewController {
 
 extension CertificateListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if certificates.count > 0 {
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = UIView()
+        } else {
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            messageLabel.text = NSLocalizedString("filelist.empty", comment: "")
+            messageLabel.textColor = .black
+            messageLabel.numberOfLines = 1
+            messageLabel.textAlignment = .center
+            messageLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            messageLabel.sizeToFit()
+            
+            tableView.backgroundView = messageLabel
+            tableView.separatorStyle = .none
+        }
+     
         return 1
     }
 
