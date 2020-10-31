@@ -21,10 +21,9 @@
 "about.info" = "Les données saisies sont stockées exclusivement sur votre téléphone ou votre ordinateur. Aucune information n'est collectée par le Ministère de l'Intérieur. L'attestation pdf générée contient un QR Code. Ce code-barres graphique permet de lire les informations portées dans votre attestation au moment de leur saisie. Il peut être déchiffré à l'aide de tout type de lecteur de QR code générique.";
 "about.official.title" = "Lien officiels";
 "about.web" = "Générateur officiel en ligne";
-"about.me.title" = "À propos de l'auteur";
-"about.me.twitter" = "Twitter";
-"about.me.blog" = "Blog";
+"about.licence.title" = "Licence";
+"about.licence" = "GNU General Public License v3.0";
 "about.sourceCode.title" = "Code source de l'application";
 "about.sourceCode.github" = "Github";
-
+"about.sourceCode.fork" = "Originally forked from David Yang";
 "filename" = "Attestation_%@.pdf";

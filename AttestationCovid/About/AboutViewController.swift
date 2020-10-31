@@ -18,19 +18,19 @@ enum AboutSections: Int, CaseIterable {
         case webapp
     }
 
-    enum DeveloperLinksContent: Int, CaseIterable {
-        case twitter
-        case blog
-    }
-
     enum SourceLinksContent: Int, CaseIterable {
         case github
+        case fork
+    }
+    
+    enum LicenceLinksContent: Int, CaseIterable {
+        case licence
     }
 
     case app
     case officialLinks
-    case developerLinks
-    case source
+    case sourceLinks
+    case licenceLinks
 }
 
 final class AboutViewController: UITableViewController {
@@ -50,10 +50,10 @@ final class AboutViewController: UITableViewController {
             return AboutSections.AppContent.allCases.count
         case .officialLinks?:
             return AboutSections.OfficialLinksContent.allCases.count
-        case .developerLinks?:
-            return AboutSections.DeveloperLinksContent.allCases.count
-        case .source?:
+        case .sourceLinks?:
             return AboutSections.SourceLinksContent.allCases.count
+        case .licenceLinks?:
+            return AboutSections.LicenceLinksContent.allCases.count
         default:
             return 0
         }
@@ -63,10 +63,10 @@ final class AboutViewController: UITableViewController {
         switch AboutSections(rawValue: section) {
         case .officialLinks?:
             return NSLocalizedString("about.official.title", comment: "")
-        case .developerLinks?:
-            return NSLocalizedString("about.me.title", comment: "")
-        case .source?:
+        case .sourceLinks?:
             return NSLocalizedString("about.sourceCode.title", comment: "")
+        case .licenceLinks?:
+            return NSLocalizedString("about.licence.title", comment: "")
         default:
             return nil
         }
@@ -83,14 +83,14 @@ final class AboutViewController: UITableViewController {
         case (.officialLinks, AboutSections.OfficialLinksContent.webapp.rawValue):
             cell.textLabel?.text = NSLocalizedString("about.web", comment: "")
             cell.textLabel?.numberOfLines = 1
-        case (.developerLinks, AboutSections.DeveloperLinksContent.twitter.rawValue):
-            cell.textLabel?.text = NSLocalizedString("about.me.twitter", comment: "")
-            cell.textLabel?.numberOfLines = 1
-        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
-            cell.textLabel?.text = NSLocalizedString("about.me.blog", comment: "")
-            cell.textLabel?.numberOfLines = 1
-        case (.source, AboutSections.SourceLinksContent.github.rawValue):
+        case (.sourceLinks, AboutSections.SourceLinksContent.github.rawValue):
             cell.textLabel?.text = NSLocalizedString("about.sourceCode.github", comment: "")
+            cell.textLabel?.numberOfLines = 1
+        case (.sourceLinks, AboutSections.SourceLinksContent.fork.rawValue):
+            cell.textLabel?.text = NSLocalizedString("about.sourceCode.fork", comment: "")
+            cell.textLabel?.numberOfLines = 1
+        case (.licenceLinks, AboutSections.LicenceLinksContent.licence.rawValue):
+            cell.textLabel?.text = NSLocalizedString("about.licence", comment: "")
             cell.textLabel?.numberOfLines = 1
         default:
             break
@@ -110,8 +110,8 @@ final class AboutViewController: UITableViewController {
             let safariController = SFSafariViewController(url: url)
             present(safariController, animated: true, completion: nil)
 
-        case (.developerLinks, AboutSections.DeveloperLinksContent.twitter.rawValue):
-            let url = URL(string: "https://twitter.com/davidy4ng")!
+        case (.licenceLinks, AboutSections.LicenceLinksContent.licence.rawValue):
+            let url = URL(string: "https://github.com/TheTrueTom/attestation-covid/blob/master/LICENSE")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
@@ -119,8 +119,8 @@ final class AboutViewController: UITableViewController {
                 present(safariController, animated: true, completion: nil)
             }
 
-        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
-            let url = URL(string: "https://david.y4ng.fr")!
+        case (.sourceLinks, AboutSections.SourceLinksContent.github.rawValue):
+            let url = URL(string: "https://github.com/TheTrueTom/attestation-covid/")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
@@ -128,7 +128,7 @@ final class AboutViewController: UITableViewController {
                 present(safariController, animated: true, completion: nil)
             }
 
-        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
+        case (.sourceLinks, AboutSections.SourceLinksContent.fork.rawValue):
             let url = URL(string: "https://github.com/davidy4ng/attestation-covid")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)

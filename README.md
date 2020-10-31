@@ -6,10 +6,21 @@ Cette application sert à générer et stocker localelement des autorisations de
 
 Il s'agit d'une version mobile iOS du générateur original mis à disposition par le Ministère de l'Intérieur disponible [ici](https://media.interieur.gouv.fr/deplacement-covid-19/).
 
+# TestFlight
+
+Currently submitted for review and will soon be available on Test Flight
+
+## Licence
+
+GNU General Public License v3.0, see LICENCE for more details
+
 ## Auteur
 
-David Yang
+Thomas Brichart
 
 ## Contributeurs
 
+Initially forked from David Yang's [repo](https://github.com/davidy4ng/attestation-covid)
+
+David Yang
 Razvan Bunea
