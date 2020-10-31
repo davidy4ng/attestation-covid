@@ -24,13 +24,14 @@
 		6392B990244226490077D83F /* DateFormatterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B98F244226490077D83F /* DateFormatterUtils.swift */; };
 		6392B992244229430077D83F /* UIViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B991244229430077D83F /* UIViewControllerUtils.swift */; };
 		6392B99524422BDE0077D83F /* CertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99424422BDE0077D83F /* CertificateViewController.swift */; };
-		6392B99724422CDC0077D83F /* certificate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6392B99624422CDC0077D83F /* certificate.pdf */; };
 		6392B99924422EE00077D83F /* CertificateDocumentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99824422EE00077D83F /* CertificateDocumentBuilder.swift */; };
 		6392B99B244245D60077D83F /* CertificateQRCodeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99A244245D60077D83F /* CertificateQRCodeBuilder.swift */; };
 		6392B99E24425AFB0077D83F /* CertificateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B99D24425AFB0077D83F /* CertificateListViewController.swift */; };
 		6392B9A124425D5A0077D83F /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392B9A024425D5A0077D83F /* FileCell.swift */; };
 		63DF0A762441E4B600E17515 /* KeyValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF0A752441E4B600E17515 /* KeyValueCell.swift */; };
 		63DF0A782441E4D200E17515 /* CheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DF0A772441E4D200E17515 /* CheckCell.swift */; };
+		E22E0457254D3E200096D294 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E0456254D3E200096D294 /* DateCell.swift */; };
+		E2418B08254D23F500317D5E /* certificate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E2418B07254D23F500317D5E /* certificate.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,21 +58,22 @@
 		639053F72442698900DCB451 /* CertificatePreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePreferences.swift; sourceTree = "<group>"; };
 		639053FA2442819100DCB451 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		639053FC24464F9900DCB451 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
-		6392B97F24421E920077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6392B98324421F6D0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6392B98824421FBA0077D83F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = fr.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6392B98A244222220077D83F /* FormViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModels.swift; sourceTree = "<group>"; };
 		6392B98D2442224A0077D83F /* Certificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certificate.swift; sourceTree = "<group>"; };
 		6392B98F244226490077D83F /* DateFormatterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterUtils.swift; sourceTree = "<group>"; };
 		6392B991244229430077D83F /* UIViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerUtils.swift; sourceTree = "<group>"; };
 		6392B99424422BDE0077D83F /* CertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewController.swift; sourceTree = "<group>"; };
-		6392B99624422CDC0077D83F /* certificate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = certificate.pdf; sourceTree = "<group>"; };
 		6392B99824422EE00077D83F /* CertificateDocumentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateDocumentBuilder.swift; sourceTree = "<group>"; };
 		6392B99A244245D60077D83F /* CertificateQRCodeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateQRCodeBuilder.swift; sourceTree = "<group>"; };
 		6392B99D24425AFB0077D83F /* CertificateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateListViewController.swift; sourceTree = "<group>"; };
 		6392B9A024425D5A0077D83F /* FileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		63DF0A752441E4B600E17515 /* KeyValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueCell.swift; sourceTree = "<group>"; };
 		63DF0A772441E4D200E17515 /* CheckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCell.swift; sourceTree = "<group>"; };
+		E22E0456254D3E200096D294 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		E2418B01254D22C100317D5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E2418B02254D22C100317D5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E2418B07254D23F500317D5E /* certificate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = certificate.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +128,7 @@
 				6392B98924421FBA0077D83F /* Main.storyboard */,
 				63067B942441E10A00B8B6C5 /* Info.plist */,
 				6392B98424421F6D0077D83F /* Localizable.strings */,
-				6392B99624422CDC0077D83F /* certificate.pdf */,
+				E2418B07254D23F500317D5E /* certificate.pdf */,
 			);
 			path = AttestationCovid;
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				63DF0A752441E4B600E17515 /* KeyValueCell.swift */,
+				E22E0456254D3E200096D294 /* DateCell.swift */,
 				63DF0A772441E4D200E17515 /* CheckCell.swift */,
 			);
 			path = Cells;
@@ -259,7 +262,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "David Yang";
 				TargetAttributes = {
 					63067B822441E10800B8B6C5 = {
@@ -277,6 +280,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				fr,
+				Base,
 			);
 			mainGroup = 63067B7A2441E10800B8B6C5;
 			productRefGroup = 63067B842441E10800B8B6C5 /* Products */;
@@ -297,7 +301,7 @@
 				63067B932441E10A00B8B6C5 /* LaunchScreen.storyboard in Resources */,
 				6392B98224421F6D0077D83F /* Localizable.strings in Resources */,
 				63067B902441E10A00B8B6C5 /* Assets.xcassets in Resources */,
-				6392B99724422CDC0077D83F /* certificate.pdf in Resources */,
+				E2418B08254D23F500317D5E /* certificate.pdf in Resources */,
 				6392B98724421FBA0077D83F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6392B99524422BDE0077D83F /* CertificateViewController.swift in Sources */,
+				E22E0457254D3E200096D294 /* DateCell.swift in Sources */,
 				6392B992244229430077D83F /* UIViewControllerUtils.swift in Sources */,
 				63067B8B2441E10800B8B6C5 /* FormViewController.swift in Sources */,
 				6392B9A124425D5A0077D83F /* FileCell.swift in Sources */,
@@ -359,7 +364,7 @@
 		63067B912441E10A00B8B6C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6392B97F24421E920077D83F /* fr */,
+				E2418B01254D22C100317D5E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -375,7 +380,7 @@
 		6392B98924421FBA0077D83F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6392B98824421FBA0077D83F /* fr */,
+				E2418B02254D22C100317D5E /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -471,6 +477,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -508,6 +515,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = H3J4BA637A;
 				INFOPLIST_FILE = AttestationCovid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -529,6 +537,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = H3J4BA637A;
 				INFOPLIST_FILE = AttestationCovid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

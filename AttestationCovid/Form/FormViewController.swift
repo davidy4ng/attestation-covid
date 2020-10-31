@@ -67,17 +67,15 @@ final class FormViewController: UITableViewController {
             }
             return cell
         case (.info, FormSection.InfoContent.birthdate.rawValue):
-            let cell = self.keyValueCell(tableView, indexPath: indexPath)
+            let cell = self.dateCell(tableView, indexPath: indexPath)
             let currentDate = Date()
-            let inputType: KeyValueCell.InputType = .date(
-                DateFormatter.date,
-                defaultDate: currentDate.dateByAdding(year: -30),
-                minDate: currentDate.dateByAdding(year: -150),
-                maxDate: currentDate.dateByAdding(year: -10)
-            )
-            cell.configure(name: NSLocalizedString("birthdate", comment: ""), placeholderValue: "01/01/1970", value: certificatePreferences.birthday, inputType: inputType) { [weak self] value in
-                self?.certificatePreferences.birthday = value
-                self?.attestation.birthdate = value
+            
+            let birthday = DateFormatter.date.date(from: certificatePreferences.birthday) ?? Date()
+            
+            cell.configure(name: NSLocalizedString("birthdate", comment: ""), mode: .date, defaultDate: birthday, minDate: currentDate.dateByAdding(year: -150), maxDate: currentDate.dateByAdding(year: -5)) { [weak self] value in
+                self?.certificatePreferences.birthday = DateFormatter.date.string(from: value)
+                self?.attestation.birthdate = DateFormatter.date.string(from: value)
+                
             }
             return cell
         case (.info, FormSection.InfoContent.birthplace.rawValue):
@@ -150,6 +148,16 @@ final class FormViewController: UITableViewController {
                 }
             }
             return cell
+        case (.motives, FormSection.MotivesContent.handicap.rawValue):
+            let cell = self.checkCell(tableView, indexPath: indexPath)
+            cell.configure(content: NSLocalizedString("motive.handicap", comment: ""), selected: attestation.motives.contains(.handicap)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.handicap)
+                } else {
+                    self?.attestation.motives.remove(.handicap)
+                }
+            }
+            return cell
         case (.motives, FormSection.MotivesContent.brief.rawValue):
             let cell = self.checkCell(tableView, indexPath: indexPath)
             cell.configure(content: NSLocalizedString("motive.brief", comment: ""), selected: attestation.motives.contains(.brief)) { [weak self] value in
@@ -180,31 +188,26 @@ final class FormViewController: UITableViewController {
                 }
             }
             return cell
+        case (.motives, FormSection.MotivesContent.school.rawValue):
+            let cell = self.checkCell(tableView, indexPath: indexPath)
+            cell.configure(content: NSLocalizedString("motive.school", comment: ""), selected: attestation.motives.contains(.school)) { [weak self] value in
+                if value {
+                    self?.attestation.motives.insert(.school)
+                } else {
+                    self?.attestation.motives.remove(.school)
+                }
+            }
+            return cell
 
         // DATE section
         case (.date, FormSection.DateContent.date.rawValue):
-            let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("date", comment: ""), value: DateFormatter.date.string(from: attestation.date), inputType: .date(DateFormatter.date)) { [weak self] dateString in
-                guard let self = self else { return }
-                let timeString = DateFormatter.time.string(from: self.attestation.date)
-                let newDateString = "\(dateString) \(timeString)"
-                if let newDate = DateFormatter.dateTime.date(from: newDateString) {
-                    self.attestation.date = newDate
-                }
+            let cell = self.dateCell(tableView, indexPath: indexPath)
+            
+            cell.configure(name: NSLocalizedString("date", comment: ""), mode: .dateAndTime, defaultDate: Date()) { [weak self] value in
+                self?.attestation.date = value
             }
             return cell
-        case (.date, FormSection.DateContent.time.rawValue):
-            let cell = self.keyValueCell(tableView, indexPath: indexPath)
-            cell.configure(name: NSLocalizedString("time", comment: ""), value: DateFormatter.time.string(from: attestation.date), inputType: .time(DateFormatter.time)) { [weak self] timeString in
-                guard let self = self else { return }
-                let dateString = DateFormatter.date.string(from: self.attestation.date)
-                let newDateString = "\(dateString) \(timeString)"
-                if let newDate = DateFormatter.dateTime.date(from: newDateString) {
-                    self.attestation.date = newDate
-                }
-            }
-            return cell
-
+            
         default:
             fatalError("Unknown row for indexPath")
         }
@@ -213,6 +216,14 @@ final class FormViewController: UITableViewController {
     private func keyValueCell(_ tableView: UITableView, indexPath: IndexPath) -> KeyValueCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: KeyValueCell.identifier, for: indexPath) as? KeyValueCell else {
             fatalError("Could not dequeue KeyValueCell")
+        }
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    private func dateCell(_ tableView: UITableView, indexPath: IndexPath) -> DateCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DateCell.identifier, for: indexPath) as? DateCell else {
+            fatalError("Could not dequeue DateCell")
         }
         cell.selectionStyle = .none
         return cell
@@ -251,4 +262,13 @@ final class FormViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+        if cell.reuseIdentifier == "CheckCellIdentifier" {
+            if let checkCell = cell as? CheckCell {
+                checkCell.didTapCell()
+            }
+        }
+    }
 }

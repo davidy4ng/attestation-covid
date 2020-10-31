@@ -17,10 +17,10 @@ extension DateFormatter {
         return formatter
     }()
 
-    static let time: DateFormatter = {
+    static let dateTimeFr: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        formatter.dateStyle = .none
+        formatter.dateStyle = .short
         formatter.timeStyle = .short
         return formatter
     }()

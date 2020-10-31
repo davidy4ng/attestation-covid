@@ -29,9 +29,11 @@ struct Certificate: Codable {
         static let shop = Motive(rawValue: 1 << 1)
         static let health = Motive(rawValue: 1 << 2)
         static let family = Motive(rawValue: 1 << 3)
-        static let brief = Motive(rawValue: 1 << 4)
-        static let administrative = Motive(rawValue: 1 << 5)
-        static let tig = Motive(rawValue: 1 << 6)
+        static let handicap = Motive(rawValue: 1 << 4)
+        static let brief = Motive(rawValue: 1 << 5)
+        static let administrative = Motive(rawValue: 1 << 6)
+        static let tig = Motive(rawValue: 1 << 7)
+        static let school = Motive(rawValue: 1 << 8)
 
         var displayableValue: String {
             var values: [String] = []
@@ -39,9 +41,11 @@ struct Certificate: Codable {
             if contains(.shop) { values.append("courses") }
             if contains(.health) { values.append("sante") }
             if contains(.family) { values.append("famille") }
+            if contains(.handicap) { values.append("handicap") }
             if contains(.brief) { values.append("sport") }
             if contains(.administrative) { values.append("judiciaire") }
             if contains(.tig) { values.append("missions") }
+            if contains(.school) { values.append("ecole") }
 
             return values.joined(separator: "-")
         }
