@@ -3,7 +3,7 @@
 //  AttestationCovid
 //
 //  Created by Thomas Brichart on 31/10/2020.
-//  Copyright © 2020 David Yang. All rights reserved.
+//  Copyright © 2020 Thomas Brichart. All rights reserved.
 //
 
 import UIKit
