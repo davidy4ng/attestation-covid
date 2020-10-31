@@ -98,8 +98,16 @@ extension CertificateListViewController {
             fatalError("Could not dequeue FileCell")
         }
 
-        cell.textLabel?.text = certificates[indexPath.row].lastPathComponent
-
+        let dateString = certificates[indexPath.row].lastPathComponent.split(separator: "_")[1]
+        let timeString = certificates[indexPath.row].lastPathComponent.split(separator: "_")[2].split(separator: ".")[0]
+        
+        let dateAndTime = dateString + "_" + timeString
+        if let date = DateFormatter.readableDateTime.date(from: String(dateAndTime)) {
+        
+            let string = "Attestation générée le " + DateFormatter.date.string(from: date) + " à " + DateFormatter.time.string(from: date)
+        
+            cell.textLabel?.text = string
+        }
         return cell
     }
 

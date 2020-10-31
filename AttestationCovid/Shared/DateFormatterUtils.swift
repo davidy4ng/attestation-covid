@@ -24,6 +24,14 @@ extension DateFormatter {
         formatter.timeStyle = .short
         return formatter
     }()
+    
+    static let time: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter
+    }()
 
     static let hour: DateFormatter = {
         let formatter = DateFormatter()
