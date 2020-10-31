@@ -28,6 +28,10 @@ final class DateCell: UITableViewCell {
         datePicker.maximumDate = maxDate
         
         self.valueChangedHandler = valueChangedHandler
+        
+        if let valueChangedHandler = valueChangedHandler {
+            valueChangedHandler(defaultDate)
+        }
     }
 }
 

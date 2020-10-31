@@ -70,7 +70,7 @@ final class FormViewController: UITableViewController {
             let cell = self.dateCell(tableView, indexPath: indexPath)
             let currentDate = Date()
             
-            let birthday = DateFormatter.date.date(from: certificatePreferences.birthday) ?? Date()
+            let birthday = DateFormatter.date.date(from: certificatePreferences.birthday) ?? Date.init(timeIntervalSince1970: 0)
             
             cell.configure(name: NSLocalizedString("birthdate", comment: ""), mode: .date, defaultDate: birthday, minDate: currentDate.dateByAdding(year: -150), maxDate: currentDate.dateByAdding(year: -5)) { [weak self] value in
                 self?.certificatePreferences.birthday = DateFormatter.date.string(from: value)
