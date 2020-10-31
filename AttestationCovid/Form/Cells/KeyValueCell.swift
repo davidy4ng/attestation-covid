@@ -24,6 +24,8 @@ final class KeyValueCell: UITableViewCell {
         valueTextField.placeholder = placeholderValue
         valueTextField.text = value
         valueTextField.inputView = nil
+        valueTextField.returnKeyType = .next
+        valueTextField.delegate = self
         self.valueChangedHandler = valueChangedHandler
     }
 }
@@ -35,5 +37,20 @@ extension KeyValueCell {
 
     @objc private func dismissKeyboard() {
         valueTextField.resignFirstResponder()
+    }
+}
+
+extension KeyValueCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Find next cell
+        if let nextCell = self.superview?.viewWithTag(self.tag + 1) as? UITableViewCell {
+            if let nextCell = nextCell as? KeyValueCell {
+                nextCell.valueTextField.becomeFirstResponder()
+            }
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return false
     }
 }

@@ -58,6 +58,7 @@ final class FormViewController: UITableViewController {
                 self?.certificatePreferences.firstname = value
                 self?.attestation.firstname = value
             }
+            cell.tag = 0
             return cell
         case (.info, FormSection.InfoContent.lastname.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
@@ -65,6 +66,7 @@ final class FormViewController: UITableViewController {
                 self?.certificatePreferences.lastname = value
                 self?.attestation.lastname = value
             }
+            cell.tag = 1
             return cell
         case (.info, FormSection.InfoContent.birthdate.rawValue):
             let cell = self.dateCell(tableView, indexPath: indexPath)
@@ -84,6 +86,7 @@ final class FormViewController: UITableViewController {
                 self?.certificatePreferences.birthplace = value
                 self?.attestation.birthplace = value
             }
+            cell.tag = 2
             return cell
         case (.info, FormSection.InfoContent.address.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
@@ -91,6 +94,7 @@ final class FormViewController: UITableViewController {
                 self?.certificatePreferences.address = value
                 self?.attestation.address = value
             }
+            cell.tag = 3
             return cell
         case (.info, FormSection.InfoContent.city.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
@@ -98,6 +102,7 @@ final class FormViewController: UITableViewController {
                 self?.certificatePreferences.city = value
                 self?.attestation.city = value
             }
+            cell.tag = 4
             return cell
         case (.info, FormSection.InfoContent.zipCode.rawValue):
             let cell = self.keyValueCell(tableView, indexPath: indexPath)
@@ -105,6 +110,7 @@ final class FormViewController: UITableViewController {
                 self?.certificatePreferences.zipCode = value
                 self?.attestation.zipCode = value
             }
+            cell.tag = 5
             return cell
 
         // MOTIVES section
@@ -237,8 +243,7 @@ final class FormViewController: UITableViewController {
         return cell
     }
 
-    @IBAction func generateAttestation(_ sender: Any) {
-        switch attestation.checkValidity() {
+    @IBAction func generateAttestation(_ sender: Any) {switch attestation.checkValidity() {
         case .success:
             print("generation du pdf")
             do {

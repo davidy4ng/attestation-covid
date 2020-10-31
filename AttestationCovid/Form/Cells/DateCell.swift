@@ -23,10 +23,11 @@ final class DateCell: UITableViewCell {
     func configure(name: String, mode: UIDatePicker.Mode, defaultDate: Date = Date(timeIntervalSince1970: 0), minDate: Date? = nil, maxDate: Date? = nil, valueChangedHandler: ((Date) -> Void)? = nil) {
         nameLabel.text = name
         datePicker.date = defaultDate
+        datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = mode
         datePicker.minimumDate = minDate
         datePicker.maximumDate = maxDate
-        
+
         self.valueChangedHandler = valueChangedHandler
         
         if let valueChangedHandler = valueChangedHandler {
@@ -40,5 +41,4 @@ extension DateCell {
         valueChangedHandler?(datePicker.date)
     }
 }
-
 
