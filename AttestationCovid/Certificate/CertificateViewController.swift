@@ -39,6 +39,9 @@ final class CertificateViewController: UIViewController {
 
         let closeBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close))
         navigationItem.rightBarButtonItem = closeBarButtonItem
+        
+        let shareBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(share))
+        navigationItem.leftBarButtonItem = shareBarButtonItem
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,4 +55,9 @@ final class CertificateViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @objc
+    private func share() {
+        let activityViewController = UIActivityViewController(activityItems: [documentURL], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
