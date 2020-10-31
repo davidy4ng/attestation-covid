@@ -29,7 +29,7 @@ struct CertificateQRCodeBuilder {
             "Motifs: \(attestation.motives.displayableValue)"
         ]
 
-        let content = strings.joined(separator: "; ")
+        let content = strings.joined(separator: ";\n ")
         let data = content.data(using: .utf8)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
             throw CertificateQRCodeBuilderError.qrCodeGeneratorUnavailable

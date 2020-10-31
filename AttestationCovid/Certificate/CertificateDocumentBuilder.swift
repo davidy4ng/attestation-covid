@@ -28,41 +28,45 @@ struct CertificateDocumentBuilder {
         let mainPage = document.page(at: 0)
         let pageWidth = mainPage?.bounds(for: .mediaBox).width ?? 600
 
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.displayName, x: 123, y: 686, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthdate, x: 123, y: 661, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthplace, x: 92, y: 638, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.fullAddress, x: 134, y: 613, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.displayName, x: 119, y: 696, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthdate, x: 119, y: 674, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthplace, x: 297, y: 674, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.fullAddress, x: 133, y: 652, width: .fittingPage(pageWidth)))
 
         if attestation.motives.contains(.pro) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 527))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 578))
         }
         if attestation.motives.contains(.shop) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 478))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 533))
         }
         if attestation.motives.contains(.health) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 436))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 477))
         }
         if attestation.motives.contains(.family) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 400))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 435))
+        }
+        if attestation.motives.contains(.support) {
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 396))
         }
         if attestation.motives.contains(.brief) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 345))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 358))
         }
         if attestation.motives.contains(.administrative) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 298))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 295))
         }
         if attestation.motives.contains(.tig) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 74, y: 260))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 255))
+        }
+        if attestation.motives.contains(.children) {
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 211))
         }
 
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.city, x: 111, y: 226, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedDate, x: 92, y: 200, width: .width(80)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedHour, x: 198, y: 201, width: .width(20)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedMinute, x: 218, y: 201, width: .width(20)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.city, x: 105, y: 177, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedDate, x: 91, y: 153, width: .width(80)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedTime, x: 264, y: 153, width: .width(80)))
 
         let qrImage = try CertificateQRCodeBuilder.build(from: attestation, creationDate: creationDate)
-        mainPage?.addAnnotation(makeImageAnnotation(image: qrImage, x: pageWidth - 170, y: 157, width: 100, height: 100))
-        makeCreationDateAnnotations(creationDate: creationDate).forEach { mainPage?.addAnnotation($0) }
+        mainPage?.addAnnotation(makeImageAnnotation(image: qrImage, x: pageWidth - 156, y: 100, width: 92, height: 92))
 
         let qrPage = PDFPage()
         let qrPageHeight = qrPage.bounds(for: .mediaBox).height
@@ -74,6 +78,7 @@ struct CertificateDocumentBuilder {
 
     private static func makeTextAnnotation(text: String, x: CGFloat, y: CGFloat, width: AnnotationWidth, fontSize: CGFloat = 11) -> PDFAnnotation {
         let safeMargin: CGFloat = 50
+        let adjustedXDelta: CGFloat = -2
         let adjustedYDelta: CGFloat = -8
 
         let widthValue: CGFloat = {
@@ -85,7 +90,7 @@ struct CertificateDocumentBuilder {
             }
         }()
 
-        let annotation = PDFAnnotation(bounds: CGRect(x: x, y: y + adjustedYDelta, width: widthValue, height: 20), forType: .freeText, withProperties: nil)
+        let annotation = PDFAnnotation(bounds: CGRect(x: x + adjustedXDelta, y: y + adjustedYDelta, width: widthValue, height: 20), forType: .freeText, withProperties: nil)
         annotation.contents = text
         annotation.color = .clear
         annotation.fontColor = .black
@@ -96,24 +101,16 @@ struct CertificateDocumentBuilder {
     }
 
     private static func makeCheckmarkAnnotation(x: CGFloat, y: CGFloat) -> PDFAnnotation {
+        let adjustedXDelta: CGFloat = -2
         let adjustedYDelta: CGFloat = -8
-        let annotation = PDFAnnotation(bounds: CGRect(x: x, y: y + adjustedYDelta, width: 20, height: 25), forType: .freeText, withProperties: nil)
-        annotation.contents = "X"
+        let annotation = PDFAnnotation(bounds: CGRect(x: x + adjustedXDelta, y: y + adjustedYDelta, width: 20, height: 25), forType: .freeText, withProperties: nil)
+        annotation.contents = "x"
         annotation.color = .clear
         annotation.fontColor = .black
-        annotation.font = UIFont(name: "Helvetica", size: 19)
+        annotation.font = UIFont(name: "Helvetica", size: 18)
         annotation.alignment = .left
 
         return annotation
-    }
-
-    private static func makeCreationDateAnnotations(creationDate: Date) -> [PDFAnnotation] {
-        let date = DateFormatter.date.string(from: creationDate)
-        let time = DateFormatter.shortTime.string(from: creationDate)
-        let line1Annotation = makeTextAnnotation(text: "Date de création:", x: 464, y: 150, width: .width(80), fontSize: 7)
-        let line2Annotation = makeTextAnnotation(text: "\(date) à \(time)", x: 455, y: 144, width: .width(80), fontSize: 7)
-
-        return [line1Annotation, line2Annotation]
     }
 
     private static func makeImageAnnotation(image: UIImage, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> PDFAnnotation {

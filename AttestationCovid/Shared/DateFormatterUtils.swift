@@ -42,7 +42,7 @@ extension DateFormatter {
     static let shortTime: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
-        formatter.dateFormat = "HH'h'mm"
+        formatter.dateFormat = "HH':'mm"
         return formatter
     }()
 
