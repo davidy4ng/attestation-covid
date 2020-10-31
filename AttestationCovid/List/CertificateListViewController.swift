@@ -9,7 +9,22 @@
 import UIKit
 
 final class CertificateListViewController: UITableViewController {
-
+    
+    @IBOutlet private weak var deleteAllButton: UIButton!
+    
+    @IBAction func deleteAllCertificates(_ sender: Any) {
+        for i in (0..<certificates.count).reversed() {
+            let indexPath = IndexPath(row: i, section: 0)
+            
+            do {
+                try removeCertificate(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
+            }
+        }
+    }
+    
     private var certificates: [URL] = []
 
     private var documentDirectory: URL? {
