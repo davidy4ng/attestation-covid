@@ -77,7 +77,6 @@ final class FormViewController: UITableViewController {
             cell.configure(name: NSLocalizedString("birthdate", comment: ""), mode: .date, defaultDate: birthday, minDate: currentDate.dateByAdding(year: -150), maxDate: currentDate.dateByAdding(year: -5)) { [weak self] value in
                 self?.certificatePreferences.birthday = DateFormatter.date.string(from: value)
                 self?.attestation.birthdate = DateFormatter.date.string(from: value)
-                
             }
             return cell
         case (.info, FormSection.InfoContent.birthplace.rawValue):
@@ -257,7 +256,7 @@ final class FormViewController: UITableViewController {
                     let navigationController = UINavigationController(rootViewController: attestationViewController)
                     present(navigationController, animated: true, completion: nil)
                 } else {
-                    self.showAlert(message: "Impossible de sauvegarder le fichier.")
+                    self.showAlert(message: NSLocalizedString("error.savingFile", comment: ""))
                 }
             } catch {
                 self.showAlert(message: error.localizedDescription)

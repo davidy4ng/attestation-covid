@@ -35,12 +35,20 @@ final class CertificateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Attestation"
-
-        let closeBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close))
-        navigationItem.rightBarButtonItem = closeBarButtonItem
+        title = NSLocalizedString("certificate", comment: "")
         
-        let shareBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(share))
+        let closeBarButtonItem: UIBarButtonItem!
+        let shareBarButtonItem: UIBarButtonItem!
+        
+        if #available(iOS 13.0, *) {
+            closeBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(close))
+            shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        } else {
+            closeBarButtonItem = UIBarButtonItem(title: NSLocalizedString("done", comment: ""), style: .done, target: self, action: #selector(close))
+            shareBarButtonItem = UIBarButtonItem(image: UIImage(named: "square.and.arrow.up"), style: .plain, target: self, action: #selector(share))
+        }
+        
+        navigationItem.rightBarButtonItem = closeBarButtonItem
         navigationItem.leftBarButtonItem = shareBarButtonItem
     }
 

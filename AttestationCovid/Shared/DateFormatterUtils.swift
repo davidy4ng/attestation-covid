@@ -11,7 +11,7 @@ import Foundation
 extension DateFormatter {
     static let date: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateStyle = .short
         formatter.timeStyle = .none
         return formatter
@@ -19,7 +19,7 @@ extension DateFormatter {
 
     static let dateTimeFr: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         return formatter
@@ -27,7 +27,7 @@ extension DateFormatter {
     
     static let time: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         return formatter
@@ -35,42 +35,42 @@ extension DateFormatter {
 
     static let hour: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateFormat = "HH"
         return formatter
     }()
 
     static let minute: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateFormat = "mm"
         return formatter
     }()
 
     static let shortTime: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateFormat = "HH'h'mm"
         return formatter
     }()
 
     static let dateTimeDigits: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateFormat = "ddMMyyyy'-'HHmm"
         return formatter
     }()
 
     static let readableDateTime: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateFormat = "dd'-'MM'-'yyyy'_'HH'-'mm'-'ss"
         return formatter
     }()
     
     static let dateTime: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.locale = Locale.current
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         return formatter

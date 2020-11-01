@@ -1,3 +1,4 @@
+"certificate" = "Attestation";
 "lastname" = "Nom";
 "firstname" = "Prénom";
 "birthdate" = "Date de naissance";
@@ -5,6 +6,7 @@
 "address" = "Adresse";
 "city" = "Ville";
 "zipCode" = "Code postal";
+"reason" = "Motif";
 
 "motive.pro" = "Déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle ou un établissement d'enseingeur ou de formation, déplacements professionnels ne pouvant être différés, déplacements pour un concours ou un examen.";
 "motive.shop" = "Déplacements pour effectuer des achats de fournitures nécessaires à l’activité professionnelle, des achats de première nécessité dans des établissements dont les activités demeurent autorisées, le retrait de commande et les livraisons à domicile.";
@@ -28,3 +30,17 @@
 "about.sourceCode.fork" = "Originally forked from David Yang";
 "filename" = "Attestation_%@.pdf";
 "filelist.empty" = "Aucun certificat à afficher";
+
+"done" = "Terminé";
+"delete" = "Supprimer";
+"cancel" = "Annuler";
+"error" = "Error";
+
+"alert.deleteAllAttestion" = "Êtes-vous sûrs de vouloir supprimer toutes les attestations présentes";
+
+"error.cannotDeleteAttestation" = "Une erreur s'est produite. Impossible de supprimer l'attestation";
+"error.missingInfo" = "Une information est manquante : ";
+"error.savingFile" = "Impossible de sauvegarder le fichier."
+
+"attestation.generated.on" = "Attestation générée le ";
+"attestation.generated.at" = " à ";

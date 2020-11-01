@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6qy-Aj-721">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -53,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="P9s-yS-WHr">
-                            <rect key="frame" x="0.0" y="383" width="414" height="76"/>
+                            <rect key="frame" x="0.0" y="443" width="414" height="76"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fq3-l1-eUV">
@@ -115,39 +116,42 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateCellIdentifier" id="aLd-X3-aMY" customClass="DateCell" customModule="Covid_Attestation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71" width="414" height="216.5"/>
+                                <rect key="frame" x="0.0" y="71" width="414" height="276.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aLd-X3-aMY" id="JYk-cN-cAq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="216.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="276.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC0-Ev-DYl">
-                                            <rect key="frame" x="16" y="11" width="45" height="194.5"/>
+                                            <rect key="frame" x="16" y="11" width="45" height="254.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="VqX-dP-eW4">
-                                            <rect key="frame" x="78" y="0.0" width="320" height="216.5"/>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="VqX-dP-eW4">
+                                            <rect key="frame" x="78" y="30" width="320" height="216.5"/>
                                         </datePicker>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BC0-Ev-DYl" firstAttribute="leading" secondItem="JYk-cN-cAq" secondAttribute="leading" constant="16" id="Qmv-YR-pMK"/>
-                                        <constraint firstItem="VqX-dP-eW4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BC0-Ev-DYl" secondAttribute="trailing" constant="16" id="VY5-Kd-0Ku"/>
-                                        <constraint firstAttribute="bottom" secondItem="VqX-dP-eW4" secondAttribute="bottom" id="bpa-uQ-cTn"/>
-                                        <constraint firstItem="VqX-dP-eW4" firstAttribute="top" secondItem="JYk-cN-cAq" secondAttribute="top" id="f4c-IZ-LwQ"/>
+                                        <constraint firstItem="VqX-dP-eW4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BC0-Ev-DYl" secondAttribute="trailing" priority="750" constant="16" id="VY5-Kd-0Ku"/>
+                                        <constraint firstAttribute="bottom" secondItem="VqX-dP-eW4" secondAttribute="bottom" constant="30" id="bpa-uQ-cTn"/>
+                                        <constraint firstItem="VqX-dP-eW4" firstAttribute="top" secondItem="JYk-cN-cAq" secondAttribute="top" constant="30" id="f4c-IZ-LwQ"/>
                                         <constraint firstItem="BC0-Ev-DYl" firstAttribute="top" secondItem="JYk-cN-cAq" secondAttribute="topMargin" id="hJw-YU-aSC"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="BC0-Ev-DYl" secondAttribute="bottom" id="iY1-My-Lb4"/>
                                         <constraint firstAttribute="trailing" secondItem="VqX-dP-eW4" secondAttribute="trailing" constant="16" id="qw4-C1-1sB"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="betweenConstraint" destination="VY5-Kd-0Ku" id="Gb5-Wk-16K"/>
+                                    <outlet property="bottomLabelConstraint" destination="iY1-My-Lb4" id="oeK-Mb-SXW"/>
                                     <outlet property="datePicker" destination="VqX-dP-eW4" id="ema-ZM-hJc"/>
                                     <outlet property="nameLabel" destination="BC0-Ev-DYl" id="uLX-h3-Bc7"/>
+                                    <outlet property="topPickerConstraint" destination="f4c-IZ-LwQ" id="KMe-Qv-HLx"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckCellIdentifier" id="P7u-9w-v3c" customClass="CheckCell" customModule="Covid_Attestation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="287.5" width="414" height="67.5"/>
+                                <rect key="frame" x="0.0" y="347.5" width="414" height="67.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P7u-9w-v3c" id="kJF-tC-dJk">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="67.5"/>

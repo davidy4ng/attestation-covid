@@ -13,8 +13,8 @@ final class CertificateListViewController: UITableViewController {
     @IBOutlet private weak var deleteAllButton: UIButton!
     
     @IBAction func deleteAllCertificates(_ sender: Any) {
-        let alertController = UIAlertController(title: "Confirmation", message: "Êtes-vous sûrs de vouloir supprimer toutes les attestations présentes", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Supprimer", style: .destructive, handler: { _ in
+        let alertController = UIAlertController(title: "Confirmation", message: NSLocalizedString("alert.deleteAllAttestion", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("delete", comment: ""), style: .destructive, handler: { _ in
             for i in (0..<self.certificates.count).reversed() {
                 let indexPath = IndexPath(row: i, section: 0)
                 
@@ -22,12 +22,12 @@ final class CertificateListViewController: UITableViewController {
                     try self.removeCertificate(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                 } catch {
-                    self.showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
+                    self.showAlert(message: NSLocalizedString("error.cannotDeleteAttestation", comment: ""))
                 }
             }
         }))
         
-        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil))
         
         present(alertController, animated: true, completion: nil)
     }
@@ -111,7 +111,7 @@ extension CertificateListViewController {
         let dateAndTime = dateString + "_" + timeString
         if let date = DateFormatter.readableDateTime.date(from: String(dateAndTime)) {
         
-            let string = "Attestation générée le " + DateFormatter.date.string(from: date) + " à " + DateFormatter.time.string(from: date)
+            let string = NSLocalizedString("attestation.generated.on", comment: "") + DateFormatter.date.string(from: date) + NSLocalizedString("attestation.generated.at", comment: "") + DateFormatter.time.string(from: date)
         
             cell.textLabel?.text = string
         }
@@ -134,7 +134,7 @@ extension CertificateListViewController {
                 try removeCertificate(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
-                showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
+                showAlert(message: NSLocalizedString("error.cannotDeleteAttestation", comment: ""))
             }
         }
     }

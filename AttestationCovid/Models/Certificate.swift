@@ -15,7 +15,7 @@ enum CertificateError: Error {
 extension CertificateError: LocalizedError {
     var errorDescription: String? {
         if case let CertificateError.missingInfo(key) = self {
-            return "Une information est manquante: \(key)."
+            return NSLocalizedString("error.missingInfo", comment: "") + "\(key)"
         }
         return nil
     }
@@ -95,28 +95,28 @@ struct Certificate: Codable {
 
     func checkValidity() -> Result<Void, Error> {
         if firstname.isEmpty {
-            return .failure(CertificateError.missingInfo("prénom"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("firstname", comment: "")))
         }
         if lastname.isEmpty {
-            return .failure(CertificateError.missingInfo("nom"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("lastname", comment: "")))
         }
         if birthdate.isEmpty {
-            return .failure(CertificateError.missingInfo("date de naissance"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("birthdate", comment: "")))
         }
         if birthplace.isEmpty {
-            return .failure(CertificateError.missingInfo("lieu de naissance"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("birthplace", comment: "")))
         }
         if address.isEmpty {
-            return .failure(CertificateError.missingInfo("adresse"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("address", comment: "")))
         }
         if city.isEmpty {
-            return .failure(CertificateError.missingInfo("ville"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("city", comment: "")))
         }
         if zipCode.isEmpty {
-            return .failure(CertificateError.missingInfo("code postal"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("zipCode", comment: "")))
         }
         if motives.isEmpty {
-            return .failure(CertificateError.missingInfo("motifs"))
+            return .failure(CertificateError.missingInfo(NSLocalizedString("reason", comment: "")))
         }
         return .success(())
     }
