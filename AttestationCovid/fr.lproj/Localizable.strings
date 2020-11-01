@@ -36,7 +36,7 @@
 "cancel" = "Annuler";
 "error" = "Error";
 
-"alert.deleteAllAttestion" = "Êtes-vous sûrs de vouloir supprimer toutes les attestations présentes";
+"alert.deleteAllAttestion" = "Êtes-vous sûr de vouloir supprimer toutes les attestations présentes ?";
 
 "error.cannotDeleteAttestation" = "Une erreur s'est produite. Impossible de supprimer l'attestation";
 "error.missingInfo" = "Une information est manquante : ";
