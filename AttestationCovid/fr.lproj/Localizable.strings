@@ -40,7 +40,7 @@
 
 "error.cannotDeleteAttestation" = "Une erreur s'est produite. Impossible de supprimer l'attestation";
 "error.missingInfo" = "Une information est manquante : ";
-"error.savingFile" = "Impossible de sauvegarder le fichier."
+"error.savingFile" = "Impossible de sauvegarder le fichier.";
 
 "attestation.generated.on" = "Attestation générée le ";
 "attestation.generated.at" = " à ";
