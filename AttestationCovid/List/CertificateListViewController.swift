@@ -13,16 +13,23 @@ final class CertificateListViewController: UITableViewController {
     @IBOutlet private weak var deleteAllButton: UIButton!
     
     @IBAction func deleteAllCertificates(_ sender: Any) {
-        for i in (0..<certificates.count).reversed() {
-            let indexPath = IndexPath(row: i, section: 0)
-            
-            do {
-                try removeCertificate(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } catch {
-                showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
+        let alertController = UIAlertController(title: "Confirmation", message: "Êtes-vous sûrs de vouloir supprimer toutes les attestations présentes", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Supprimer", style: .destructive, handler: { _ in
+            for i in (0..<self.certificates.count).reversed() {
+                let indexPath = IndexPath(row: i, section: 0)
+                
+                do {
+                    try self.removeCertificate(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                } catch {
+                    self.showAlert(message: "Une erreur s'est produite. Impossible de supprimer l'attestation")
+                }
             }
-        }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Annuler", style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     private var certificates: [URL] = []
