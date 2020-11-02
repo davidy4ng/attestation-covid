@@ -90,7 +90,6 @@ extension CertificateListViewController {
         } else {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
             messageLabel.text = NSLocalizedString("filelist.empty", comment: "")
-            messageLabel.textColor = .black
             messageLabel.numberOfLines = 1
             messageLabel.textAlignment = .center
             messageLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
