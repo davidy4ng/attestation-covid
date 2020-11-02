@@ -21,7 +21,7 @@ final class CheckButton: UIButton {
         setup()
     }
 
-    private func setup() {
+    private func setup() {        
         addTarget(self, action: #selector(toggleSelection), for: .touchUpInside)
     }
 

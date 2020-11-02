@@ -15,16 +15,24 @@ final class CertificateListViewController: UITableViewController {
     @IBAction func deleteAllCertificates(_ sender: Any) {
         let alertController = UIAlertController(title: "Confirmation", message: NSLocalizedString("alert.deleteAllAttestion", comment: ""), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: NSLocalizedString("delete", comment: ""), style: .destructive, handler: { _ in
+
             for i in (0..<self.certificates.count).reversed() {
-                let indexPath = IndexPath(row: i, section: 0)
+                let indexPath: IndexPath!
+                
+                if i == 0 {
+                    indexPath = IndexPath(row: i, section: 0)
+                } else {
+                    indexPath = IndexPath(row: i - 1, section: 1)
+                }
                 
                 do {
-                    try self.removeCertificate(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    try self.removeCertificate(at: indexPath)
                 } catch {
                     self.showAlert(message: NSLocalizedString("error.cannotDeleteAttestation", comment: ""))
                 }
             }
+            
+            self.tableView.reloadData()
         }))
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil))
@@ -42,7 +50,6 @@ final class CertificateListViewController: UITableViewController {
         super.viewDidLoad()
 
         registerCells()
-        tableView.tableFooterView = UIView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -93,20 +100,36 @@ extension CertificateListViewController {
             tableView.separatorStyle = .none
         }
      
-        return 1
+        return certificates.count < 2 ? 1 : 2
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if certificates.count < 2 {
+            return nil
+        }
+        
+        return section == 0 ? NSLocalizedString("filesection.latest", comment: "") : NSLocalizedString("filesection.other", comment: "")
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return certificates.count
+        guard !certificates.isEmpty else { return 0 }
+        
+        if section == 0 || certificates.count < 2 {
+            return 1
+        } else {
+            return certificates.count - 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FileCell.identifier, for: indexPath) as? FileCell else {
             fatalError("Could not dequeue FileCell")
         }
-
-        let dateString = certificates[indexPath.row].lastPathComponent.split(separator: "_")[1]
-        let timeString = certificates[indexPath.row].lastPathComponent.split(separator: "_")[2].split(separator: ".")[0]
+        
+        let certificate = indexPath.section == 0 ? certificates[indexPath.row] : certificates[indexPath.row + 1]
+        
+        let dateString = certificate.lastPathComponent.split(separator: "_")[1]
+        let timeString = certificate.lastPathComponent.split(separator: "_")[2].split(separator: ".")[0]
         
         let dateAndTime = dateString + "_" + timeString
         if let date = DateFormatter.readableDateTime.date(from: String(dateAndTime)) {
@@ -121,7 +144,7 @@ extension CertificateListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let documentURL = certificates[indexPath.row]
+        let documentURL = indexPath.section == 0 ? certificates[indexPath.row] : certificates[indexPath.row + 1]
 
         let attestationViewController = CertificateViewController(documentURL: documentURL)
         let navigationController = UINavigationController(rootViewController: attestationViewController)
@@ -131,7 +154,7 @@ extension CertificateListViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             do {
-                try removeCertificate(at: indexPath.row)
+                try removeCertificate(at: indexPath)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
                 showAlert(message: NSLocalizedString("error.cannotDeleteAttestation", comment: ""))
@@ -141,7 +164,10 @@ extension CertificateListViewController {
 }
 
 extension CertificateListViewController {
-    private func removeCertificate(at index: Int) throws {
+    private func removeCertificate(at indexPath: IndexPath) throws {
+        
+        let index = indexPath.section == 0 ? indexPath.row : indexPath.row + 1
+        
         try FileManager.default.removeItem(at: certificates[index])
         certificates.remove(at: index)
     }

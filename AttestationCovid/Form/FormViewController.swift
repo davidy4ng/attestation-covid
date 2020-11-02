@@ -31,6 +31,14 @@ final class FormViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return FormSection.allCases.count
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionTitles = [NSLocalizedString("form.section.info", comment: ""),
+                             NSLocalizedString("form.section.reason", comment: ""),
+                             NSLocalizedString("form.section.date", comment: "")]
+        
+        return sectionTitles[section]
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch FormSection(rawValue: section) {

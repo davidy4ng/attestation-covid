@@ -49,23 +49,30 @@
         <scene sceneID="4oA-yF-Pxz">
             <objects>
                 <tableViewController storyboardIdentifier="FormViewController" id="oQ5-4J-kVp" customClass="FormViewController" customModule="Covid_Attestation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QWC-AX-hZA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="-1" id="QWC-AX-hZA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="P9s-yS-WHr">
-                            <rect key="frame" x="0.0" y="383.5" width="414" height="76"/>
+                            <rect key="frame" x="0.0" y="416.5" width="414" height="88"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fq3-l1-eUV">
-                                    <rect key="frame" x="16" y="16" width="382" height="44"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fq3-l1-eUV">
+                                    <rect key="frame" x="16" y="16" width="382" height="56"/>
                                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="FPu-FK-krg"/>
+                                        <constraint firstAttribute="height" constant="56" id="FPu-FK-krg"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="Générer l'attestation">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="generateAttestation:" destination="oQ5-4J-kVp" eventType="touchUpInside" id="XOd-Pw-Zhc"/>
                                     </connections>
@@ -81,7 +88,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeyValueCellIdentifier" id="Iwv-Eg-QH5" customClass="KeyValueCell" customModule="Covid_Attestation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iwv-Eg-QH5" id="NPa-6V-4co">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -116,27 +123,27 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateCellIdentifier" id="aLd-X3-aMY" customClass="DateCell" customModule="Covid_Attestation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.5" width="414" height="216.5"/>
+                                <rect key="frame" x="0.0" y="99" width="414" height="232.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aLd-X3-aMY" id="JYk-cN-cAq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="216.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="232.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BC0-Ev-DYl">
-                                            <rect key="frame" x="16" y="11" width="45" height="194.5"/>
+                                            <rect key="frame" x="16" y="11" width="45" height="210.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="VqX-dP-eW4">
-                                            <rect key="frame" x="78" y="0.0" width="320" height="216.5"/>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="VqX-dP-eW4">
+                                            <rect key="frame" x="78" y="8" width="320" height="216.5"/>
                                         </datePicker>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BC0-Ev-DYl" firstAttribute="leading" secondItem="JYk-cN-cAq" secondAttribute="leading" constant="16" id="Qmv-YR-pMK"/>
                                         <constraint firstItem="VqX-dP-eW4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BC0-Ev-DYl" secondAttribute="trailing" priority="750" constant="16" id="VY5-Kd-0Ku"/>
-                                        <constraint firstAttribute="bottom" secondItem="VqX-dP-eW4" secondAttribute="bottom" id="bpa-uQ-cTn"/>
-                                        <constraint firstItem="VqX-dP-eW4" firstAttribute="top" secondItem="JYk-cN-cAq" secondAttribute="top" id="f4c-IZ-LwQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="VqX-dP-eW4" secondAttribute="bottom" constant="8" id="bpa-uQ-cTn"/>
+                                        <constraint firstItem="VqX-dP-eW4" firstAttribute="top" secondItem="JYk-cN-cAq" secondAttribute="top" constant="8" id="f4c-IZ-LwQ"/>
                                         <constraint firstItem="BC0-Ev-DYl" firstAttribute="top" secondItem="JYk-cN-cAq" secondAttribute="topMargin" id="hJw-YU-aSC"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="BC0-Ev-DYl" secondAttribute="bottom" id="iY1-My-Lb4"/>
                                         <constraint firstAttribute="trailing" secondItem="VqX-dP-eW4" secondAttribute="trailing" constant="16" id="qw4-C1-1sB"/>
@@ -151,7 +158,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckCellIdentifier" id="P7u-9w-v3c" customClass="CheckCell" customModule="Covid_Attestation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="288" width="414" height="67.5"/>
+                                <rect key="frame" x="0.0" y="331.5" width="414" height="67.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P7u-9w-v3c" id="kJF-tC-dJk">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="67.5"/>
@@ -226,10 +233,10 @@ lakdsjlfkd</string>
         <scene sceneID="pV6-L3-30e">
             <objects>
                 <tableViewController id="Mbc-RY-Xt0" customClass="CertificateListViewController" customModule="Covid_Attestation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZdU-C5-s5j">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZdU-C5-s5j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="Mbc-RY-Xt0" id="nM3-Mx-ZUS"/>
                             <outlet property="delegate" destination="Mbc-RY-Xt0" id="JwZ-pR-idk"/>

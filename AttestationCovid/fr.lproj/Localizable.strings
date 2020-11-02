@@ -1,3 +1,7 @@
+"form.section.info" = "Informations personnelles";
+"form.section.reason" = "Motifs";
+"form.section.date" = "Date";
+
 "certificate" = "Attestation";
 "lastname" = "Nom";
 "firstname" = "Prénom";
@@ -30,6 +34,8 @@
 "about.sourceCode.fork" = "Originally forked from David Yang";
 "filename" = "Attestation_%@.pdf";
 "filelist.empty" = "Aucun certificat à afficher";
+"filesection.latest" = "Dernière attestation générée";
+"filesection.other" = "Autres attestations";
 
 "done" = "Terminé";
 "delete" = "Supprimer";
