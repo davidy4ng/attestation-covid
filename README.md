@@ -12,5 +12,5 @@ David Yang
 
 ## Contributeurs
 
-Razvan Bunea
-juanitooo
+- Razvan Bunea
+- juanitooo
