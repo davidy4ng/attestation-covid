@@ -26,7 +26,7 @@ final class CheckButton: UIButton {
     }
 
     @objc
-    private func toggleSelection() {
+    func toggleSelection() {
         isSelected.toggle()
         onSelectionChange?(isSelected)
     }

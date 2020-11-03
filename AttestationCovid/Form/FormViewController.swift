@@ -230,6 +230,14 @@ final class FormViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = FormSection(rawValue: indexPath.section), section == .motives,
+              let cell = tableView.cellForRow(at: indexPath) as? CheckCell else {
+            return
+        }
+        cell.toggleSelection()
+    }
+
     private func keyValueCell(_ tableView: UITableView, indexPath: IndexPath) -> KeyValueCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: KeyValueCell.identifier, for: indexPath) as? KeyValueCell else {
             fatalError("Could not dequeue KeyValueCell")
