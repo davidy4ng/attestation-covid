@@ -21,4 +21,8 @@ final class CheckCell: UITableViewCell {
         checkButton.isSelected = selected
         checkButton.onSelectionChange = valueChangedHandler
     }
+
+    func toggleSelection() {
+        checkButton.toggleSelection()
+    }
 }
