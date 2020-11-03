@@ -28,6 +28,16 @@ final class FormViewController: UITableViewController {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshCertificateDate()
+    }
+
+    private func refreshCertificateDate() {
+        attestation.date = Date()
+        tableView.reloadData()
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return FormSection.allCases.count
     }
