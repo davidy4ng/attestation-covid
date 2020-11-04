@@ -128,7 +128,7 @@ final class AboutViewController: UITableViewController {
                 present(safariController, animated: true, completion: nil)
             }
 
-        case (.developerLinks, AboutSections.DeveloperLinksContent.blog.rawValue):
+        case (.source, AboutSections.SourceLinksContent.github.rawValue):
             let url = URL(string: "https://github.com/davidy4ng/attestation-covid")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
