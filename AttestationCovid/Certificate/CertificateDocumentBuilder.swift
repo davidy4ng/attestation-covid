@@ -28,42 +28,42 @@ struct CertificateDocumentBuilder {
         let mainPage = document.page(at: 0)
         let pageWidth = mainPage?.bounds(for: .mediaBox).width ?? 600
 
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.displayName, x: 119, y: 696, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthdate, x: 119, y: 674, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthplace, x: 297, y: 674, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.fullAddress, x: 133, y: 652, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.displayName, x: 92, y: 702, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthdate, x: 92, y: 684, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.birthplace, x: 214, y: 684, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.fullAddress, x: 104, y: 665, width: .fittingPage(pageWidth)))
 
         if attestation.motives.contains(.pro) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 578))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 553))
         }
         if attestation.motives.contains(.shop) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 533))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 482))
         }
         if attestation.motives.contains(.health) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 477))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 434))
         }
         if attestation.motives.contains(.family) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 435))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 410))
         }
         if attestation.motives.contains(.support) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 396))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 373))
         }
         if attestation.motives.contains(.brief) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 358))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 349))
         }
         if attestation.motives.contains(.administrative) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 295))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 276))
         }
         if attestation.motives.contains(.tig) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 255))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 252))
         }
         if attestation.motives.contains(.children) {
-            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 78, y: 211))
+            mainPage?.addAnnotation(makeCheckmarkAnnotation(x: 47, y: 228))
         }
 
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.city, x: 105, y: 177, width: .fittingPage(pageWidth)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedDate, x: 91, y: 153, width: .width(80)))
-        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedTime, x: 264, y: 153, width: .width(80)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.city, x: 78, y: 76, width: .fittingPage(pageWidth)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedDate, x: 63, y: 58, width: .width(80)))
+        mainPage?.addAnnotation(makeTextAnnotation(text: attestation.formattedTime, x: 227, y: 58, width: .width(80)))
 
         let qrImage = try CertificateQRCodeBuilder.build(from: attestation, creationDate: creationDate)
         mainPage?.addAnnotation(makeImageAnnotation(image: qrImage, x: pageWidth - 156, y: 100, width: 92, height: 92))
